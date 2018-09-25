@@ -6,9 +6,10 @@ $utilisateur = 'webmestre';
 $mdp = "bdd2018Marina";
 
 //$db = pg_connect("$host $port $dbname $credentials");
-$conn = new PDO('pgsql:host=localhost;port=5432;dbname=marinaconnectdb', $utilisateur, $mdp);
+$dsn = 'pgsql:host=localhost;port=5432;dbname=marinaconnectdb';
+$basededonnees = new PDO($dsn, $utilisateur, $mdp);
 
-$sql = "SELECT * FROM etrevivant ";
+/*$sql = "SELECT * FROM etrevivant ";
 
 $resultset = $conn->prepare($sql);
 
@@ -18,5 +19,5 @@ while ($row = $resultset->fetch()) {
     echo '<p>' . $row[1] .'</p>' ;
 
     }
-
+*/
 ?>
