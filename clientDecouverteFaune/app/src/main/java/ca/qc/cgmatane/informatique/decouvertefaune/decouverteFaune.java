@@ -3,7 +3,7 @@ package ca.qc.cgmatane.informatique.decouvertefaune;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class decouverteFaune extends AppCompatActivity {
+public class DecouverteFaune extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

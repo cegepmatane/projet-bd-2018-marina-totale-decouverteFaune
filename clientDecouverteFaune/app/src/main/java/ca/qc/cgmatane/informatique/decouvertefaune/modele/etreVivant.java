@@ -1,6 +1,6 @@
 package ca.qc.cgmatane.informatique.decouvertefaune.modele;
 
-public class etreVivant {
+public class EtreVivant {
     protected  int id_etreVivant;
     protected   String categorie;
     protected  String espece;

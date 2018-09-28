@@ -1,6 +1,6 @@
 package ca.qc.cgmatane.informatique.decouvertefaune.modele;
 
-public class commentaire {
+public class Commentaire {
     protected int id_commentaire;
     protected int noteCommentaire;
     protected String coordonneGpsCommentaire;
