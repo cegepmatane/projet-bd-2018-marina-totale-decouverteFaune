@@ -1,6 +1,8 @@
 package ca.qc.cgmatane.informatique.decouvertefaune.donnee;
 
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
@@ -46,7 +48,20 @@ public class EtreVivantDAO<T> {
                     Document docListeEtreVivant = parseur.parse(new StringBufferInputStream(xmlRssEtreVivant));
                     String racine = docListeEtreVivant.getDocumentElement().getNodeName();
                     //System.out.println("Racine:" + racine);
-                    NodeList noeudListeEtreVivant = docListeEtreVivant.getElementsByTagName("row");
+                    NodeList noeudListeEtreVivant = docListeEtreVivant.getElementsByTagName("etreVivant");
+                    for(int position = 0; position < noeudListeEtreVivant.getLength(); position++)
+                    {
+                        EtreVivant etreVivant = new EtreVivant();
+                        Node noeudEtreVivant = noeudListeEtreVivant.item(position);
+
+                        System.out.println(noeudEtreVivant.getTextContent());
+                        //Element elementEtreVivant = (Element)noeudEtreVivant;
+
+                        //Recuper le nom
+                        /*Node noeudSeisme = elementSeisme.getElementsByTagName("region").item(0);// juste un nom a chercher dans le fruit
+                        Element elementNom = (Element)noeudSeisme;
+                        seisme.setNom("Lieu : " + elementNom.getTextContent());*/
+                    }
 
                 } catch (SAXException | IOException e) {
                     // TODO Auto-generated catch block
