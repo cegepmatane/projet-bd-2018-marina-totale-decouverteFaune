@@ -8,6 +8,6 @@ public class MarinaConnect extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_marina_connect);
+        setContentView(R.layout.vue_accueil);
     }
 }
