@@ -3,7 +3,9 @@
 --
 
 -- Dumped from database version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
--- Dumped by pg_dump version 10.5 (Ubuntu 10.5-0ubuntu0.18.04)
+-- Dumped by pg_dump version 10.4
+
+-- Started on 2018-10-05 02:43:04
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -16,6 +18,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
+-- TOC entry 1 (class 3079 OID 13007)
 -- Name: plpgsql; Type: EXTENSION; Schema: -; Owner: 
 --
 
@@ -23,6 +26,8 @@ CREATE EXTENSION IF NOT EXISTS plpgsql WITH SCHEMA pg_catalog;
 
 
 --
+-- TOC entry 2904 (class 0 OID 0)
+-- Dependencies: 1
 -- Name: EXTENSION plpgsql; Type: COMMENT; Schema: -; Owner: 
 --
 
@@ -34,7 +39,8 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: commentaire; Type: TABLE; Schema: public; Owner: postgres
+-- TOC entry 199 (class 1259 OID 16555)
+-- Name: commentaire; Type: TABLE; Schema: public; Owner: webmestre
 --
 
 CREATE TABLE public.commentaire (
@@ -47,10 +53,11 @@ CREATE TABLE public.commentaire (
 );
 
 
-ALTER TABLE public.commentaire OWNER TO postgres;
+ALTER TABLE public.commentaire OWNER TO webmestre;
 
 --
--- Name: commentaire_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- TOC entry 198 (class 1259 OID 16553)
+-- Name: commentaire_id_seq; Type: SEQUENCE; Schema: public; Owner: webmestre
 --
 
 CREATE SEQUENCE public.commentaire_id_seq
@@ -62,17 +69,20 @@ CREATE SEQUENCE public.commentaire_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.commentaire_id_seq OWNER TO postgres;
+ALTER TABLE public.commentaire_id_seq OWNER TO webmestre;
 
 --
--- Name: commentaire_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- TOC entry 2905 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: commentaire_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: webmestre
 --
 
 ALTER SEQUENCE public.commentaire_id_seq OWNED BY public.commentaire.id;
 
 
 --
--- Name: etrevivant; Type: TABLE; Schema: public; Owner: postgres
+-- TOC entry 197 (class 1259 OID 16547)
+-- Name: etrevivant; Type: TABLE; Schema: public; Owner: webmestre
 --
 
 CREATE TABLE public.etrevivant (
@@ -84,10 +94,11 @@ CREATE TABLE public.etrevivant (
 );
 
 
-ALTER TABLE public.etrevivant OWNER TO postgres;
+ALTER TABLE public.etrevivant OWNER TO webmestre;
 
 --
--- Name: etrevivant_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- TOC entry 196 (class 1259 OID 16545)
+-- Name: etrevivant_id_seq; Type: SEQUENCE; Schema: public; Owner: webmestre
 --
 
 CREATE SEQUENCE public.etrevivant_id_seq
@@ -99,31 +110,52 @@ CREATE SEQUENCE public.etrevivant_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.etrevivant_id_seq OWNER TO postgres;
+ALTER TABLE public.etrevivant_id_seq OWNER TO webmestre;
 
 --
--- Name: etrevivant_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+-- TOC entry 2906 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: etrevivant_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: webmestre
 --
 
 ALTER SEQUENCE public.etrevivant_id_seq OWNED BY public.etrevivant.id;
 
 
 --
--- Name: commentaire id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 200 (class 1259 OID 16569)
+-- Name: votes; Type: TABLE; Schema: public; Owner: webmestre
+--
+
+CREATE TABLE public.votes (
+    id integer NOT NULL,
+    idcommentaire integer,
+    total_values double precision,
+    total_votes integer
+);
+
+
+ALTER TABLE public.votes OWNER TO webmestre;
+
+--
+-- TOC entry 2763 (class 2604 OID 16558)
+-- Name: commentaire id; Type: DEFAULT; Schema: public; Owner: webmestre
 --
 
 ALTER TABLE ONLY public.commentaire ALTER COLUMN id SET DEFAULT nextval('public.commentaire_id_seq'::regclass);
 
 
 --
--- Name: etrevivant id; Type: DEFAULT; Schema: public; Owner: postgres
+-- TOC entry 2762 (class 2604 OID 16550)
+-- Name: etrevivant id; Type: DEFAULT; Schema: public; Owner: webmestre
 --
 
 ALTER TABLE ONLY public.etrevivant ALTER COLUMN id SET DEFAULT nextval('public.etrevivant_id_seq'::regclass);
 
 
 --
--- Data for Name: commentaire; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 2895 (class 0 OID 16555)
+-- Dependencies: 199
+-- Data for Name: commentaire; Type: TABLE DATA; Schema: public; Owner: webmestre
 --
 
 COPY public.commentaire (id, notecommentaire, coordgpscommentaire, urlimagecomm, textecom, idetreviant) FROM stdin;
@@ -131,29 +163,49 @@ COPY public.commentaire (id, notecommentaire, coordgpscommentaire, urlimagecomm,
 
 
 --
--- Data for Name: etrevivant; Type: TABLE DATA; Schema: public; Owner: postgres
+-- TOC entry 2893 (class 0 OID 16547)
+-- Dependencies: 197
+-- Data for Name: etrevivant; Type: TABLE DATA; Schema: public; Owner: webmestre
 --
 
 COPY public.etrevivant (id, categorie, urlwiki, urlimage, espece) FROM stdin;
+1	test	test	test	test
+2	marin	test.com	test.com	dauphin
+3	fdf	dfdf	dfdf	dfdf
 \.
 
 
 --
--- Name: commentaire_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 2896 (class 0 OID 16569)
+-- Dependencies: 200
+-- Data for Name: votes; Type: TABLE DATA; Schema: public; Owner: webmestre
+--
+
+COPY public.votes (id, idcommentaire, total_values, total_votes) FROM stdin;
+\.
+
+
+--
+-- TOC entry 2907 (class 0 OID 0)
+-- Dependencies: 198
+-- Name: commentaire_id_seq; Type: SEQUENCE SET; Schema: public; Owner: webmestre
 --
 
 SELECT pg_catalog.setval('public.commentaire_id_seq', 1, false);
 
 
 --
--- Name: etrevivant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- TOC entry 2908 (class 0 OID 0)
+-- Dependencies: 196
+-- Name: etrevivant_id_seq; Type: SEQUENCE SET; Schema: public; Owner: webmestre
 --
 
-SELECT pg_catalog.setval('public.etrevivant_id_seq', 1, false);
+SELECT pg_catalog.setval('public.etrevivant_id_seq', 2, true);
 
 
 --
--- Name: commentaire commentaire_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2767 (class 2606 OID 16560)
+-- Name: commentaire commentaire_pkey; Type: CONSTRAINT; Schema: public; Owner: webmestre
 --
 
 ALTER TABLE ONLY public.commentaire
@@ -161,7 +213,8 @@ ALTER TABLE ONLY public.commentaire
 
 
 --
--- Name: etrevivant etrevivant_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- TOC entry 2765 (class 2606 OID 16552)
+-- Name: etrevivant etrevivant_pkey; Type: CONSTRAINT; Schema: public; Owner: webmestre
 --
 
 ALTER TABLE ONLY public.etrevivant
@@ -169,18 +222,24 @@ ALTER TABLE ONLY public.etrevivant
 
 
 --
--- Name: TABLE commentaire; Type: ACL; Schema: public; Owner: postgres
+-- TOC entry 2769 (class 2606 OID 16573)
+-- Name: votes votes_pkey; Type: CONSTRAINT; Schema: public; Owner: webmestre
 --
 
-GRANT ALL ON TABLE public.commentaire TO webmestre;
+ALTER TABLE ONLY public.votes
+    ADD CONSTRAINT votes_pkey PRIMARY KEY (id);
 
 
 --
--- Name: TABLE etrevivant; Type: ACL; Schema: public; Owner: postgres
+-- TOC entry 2770 (class 2606 OID 16574)
+-- Name: votes votes_idcommentaire_fkey; Type: FK CONSTRAINT; Schema: public; Owner: webmestre
 --
 
-GRANT ALL ON TABLE public.etrevivant TO webmestre;
+ALTER TABLE ONLY public.votes
+    ADD CONSTRAINT votes_idcommentaire_fkey FOREIGN KEY (idcommentaire) REFERENCES public.commentaire(id);
 
+
+-- Completed on 2018-10-05 02:43:07
 
 --
 -- PostgreSQL database dump complete
