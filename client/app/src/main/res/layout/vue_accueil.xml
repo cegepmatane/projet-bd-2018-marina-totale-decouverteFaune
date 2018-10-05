@@ -8,16 +8,18 @@
     tools:context=".MarinaConnect">
 
     <Button
-        android:id="@+id/vue_accueil_bouton_connection"
+        android:id="@+id/action_naviguer_connection"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
-        android:baselineAligned="false"
         android:text="Se connecter" />
 
     <Button
-        android:id="@+id/vue_accueil_bouton_inscription"
+        android:id="@+id/action_naviguer_inscription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="S'inscrire" />
+        android:layout_marginBottom="30dp"
+
+        android:text="Créer un compte" />
+
 </LinearLayout>
