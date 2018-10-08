@@ -1,6 +1,5 @@
 package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 
-import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import ca.qc.cgmatane.informatique.marinaconnect.modele.Utilisateur;
@@ -24,7 +23,7 @@ public class UtilisateurDAO {
                 System.out.println(utilisateur.getMail());
                 System.out.println(utilisateur.getMdp());
 
-                String url = "http://158.69.113.110/serveurDecouverteFaune/src/Utilisateur/ajouter/index.php?mail=test&mdp=test";
+                String url = "http://158.69.113.110/serveurDecouverteFaune/src/Utilisateur/ajouter/index.php?mail="+utilisateur.getMail()+"&mdp="+utilisateur.getMdp();
 
                 String resultat;
                 HttpGetRequete getRequete = new HttpGetRequete();
