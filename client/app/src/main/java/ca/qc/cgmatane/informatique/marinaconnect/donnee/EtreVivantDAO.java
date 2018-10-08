@@ -1,5 +1,9 @@
 package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 
+import java.util.List;
+
+import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
+
 public class EtreVivantDAO {
 
     private static EtreVivantDAO instance = null;
@@ -14,7 +18,7 @@ public class EtreVivantDAO {
     }
 
 
-    public void listerEtreVivant(){
+    public List<EtreVivant> listerEtreVivant(){
 
     }
 }
