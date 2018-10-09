@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,10 +48,12 @@ public class VueConnection extends AppCompatActivity {
 
     }
 
-
     private void verifierUtilisateur() {
         utilisateur = new Utilisateur(champMail.getText().toString(), champMdp.getText().toString());
         Toast toast = Toast.makeText(getApplicationContext(), "Mail ou mot de passe incorrect", Toast.LENGTH_LONG);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+
+
         Dialog dialog = new Dialog(this);
 
         if (accesseurUtilisateur.verifierConnection(utilisateur)) {
