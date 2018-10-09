@@ -20,6 +20,8 @@
         </activity>
         <activity android:name=".vue.VueConnection" />
         <activity android:name=".vue.VueInscription" />
+        <activity android:name=".vue.VueListeFaune" />
+
 
     </application>
 

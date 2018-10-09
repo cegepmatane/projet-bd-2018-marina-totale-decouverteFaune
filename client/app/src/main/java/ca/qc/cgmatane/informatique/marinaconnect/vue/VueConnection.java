@@ -1,11 +1,14 @@
 package ca.qc.cgmatane.informatique.marinaconnect.vue;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
@@ -47,9 +50,15 @@ public class VueConnection extends AppCompatActivity {
 
     private void verifierUtilisateur() {
         utilisateur = new Utilisateur(champMail.getText().toString(), champMdp.getText().toString());
+        Toast toast = Toast.makeText(getApplicationContext(), "Mail ou mot de passe incorrect", Toast.LENGTH_LONG);
+        Dialog dialog = new Dialog(this);
+
         if (accesseurUtilisateur.verifierConnection(utilisateur)) {
             System.out.println("GAGNER");
             startActivityForResult(intentionNaviguerVueListeFaune, ACTIVITE_LISTE_FAUNE);
+        }
+        else{
+            toast.show();
         }
     }
 
