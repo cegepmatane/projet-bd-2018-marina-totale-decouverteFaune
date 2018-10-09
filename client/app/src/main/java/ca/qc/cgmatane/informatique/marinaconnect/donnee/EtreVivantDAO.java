@@ -3,13 +3,17 @@ package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
 
+import java.io.IOException;
 import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
 
@@ -33,11 +37,10 @@ public class EtreVivantDAO {
     }
 
 
-    /*public List<EtreVivant> listerEtreVivant(){
-        try{
+    public List<EtreVivant> listerEtreVivant() {
+        try {
             String url = "http://158.69.113.110/serveurDecouverteFaune/src/etreVivant/liste/index.php";
             String xml;
-            String nombre;
             String derniereBalise = "</etreVivants>";
             HttpPostRequete postRequete = new HttpPostRequete();
             xml = postRequete.execute(url, derniereBalise).get();
@@ -50,7 +53,36 @@ public class EtreVivantDAO {
 
             for (int position = 0; position < listeNoeudEtreVivant.getLength(); position++) {
                 Element noeudEtreVivant = (Element) listeNoeudEtreVivant.item(position);
-                nombre = noeudEtreVivant.getElementsByTagName("nombre").item(0).getTextContent();
+                EtreVivant etreVivant = new EtreVivant();
+                String id = noeudEtreVivant.getElementsByTagName("id").item(0).getTextContent();
+                etreVivant.setId(Integer.parseInt(id));
+                String categorie = noeudEtreVivant.getElementsByTagName("categorie").item(0).getTextContent();
+                etreVivant.setCategorie(categorie);
+                String urlWiki = noeudEtreVivant.getElementsByTagName("urlWiki").item(0).getTextContent();
+                etreVivant.setUrlWiki(urlWiki);
+                String urlImage = noeudEtreVivant.getElementsByTagName("urlImage").item(0).getTextContent();
+                etreVivant.setUrlImage(urlImage);
+                String espece = noeudEtreVivant.getElementsByTagName("espece").item(0).getTextContent();
+                etreVivant.setEspece(espece);
+
+                listeEtreVivant.add(etreVivant);
             }
-    }*/
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+
+        } catch (SAXException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+
+        }
+        return listeEtreVivant;
+    }
 }
