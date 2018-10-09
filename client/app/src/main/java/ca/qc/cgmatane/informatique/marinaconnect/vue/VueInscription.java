@@ -34,6 +34,7 @@ public class VueInscription extends AppCompatActivity {
         champMdp = (EditText)findViewById(R.id.vue_creer_compte_champ_mot_de_passe);
         champMdpConfirme = (EditText)findViewById(R.id.vue_creer_compte_champ_verification_mot_de_passe);
         intentionNaviguerAccueil = new Intent(this, MarinaConnect.class);
+
         Button actionNaviguerListeFaune =
                 (Button) findViewById(R.id.action_sinscrire);
 
