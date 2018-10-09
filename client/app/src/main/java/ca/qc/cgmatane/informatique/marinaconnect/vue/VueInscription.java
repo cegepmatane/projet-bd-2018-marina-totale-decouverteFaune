@@ -35,10 +35,10 @@ public class VueInscription extends AppCompatActivity {
         champMdpConfirme = (EditText)findViewById(R.id.vue_creer_compte_champ_verification_mot_de_passe);
         intentionNaviguerAccueil = new Intent(this, MarinaConnect.class);
 
-        Button actionNaviguerListeFaune =
+        Button actionNaviguerAccueil =
                 (Button) findViewById(R.id.action_sinscrire);
 
-        actionNaviguerListeFaune.setOnClickListener(
+        actionNaviguerAccueil.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View arg0){
                         enregistrerUtilisateur();

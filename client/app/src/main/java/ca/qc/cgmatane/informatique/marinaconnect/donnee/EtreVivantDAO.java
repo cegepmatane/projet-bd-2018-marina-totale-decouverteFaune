@@ -18,7 +18,9 @@ public class EtreVivantDAO {
     }
 
 
-    public List<EtreVivant> listerEtreVivant(){
-
-    }
+    /*public List<EtreVivant> listerEtreVivant(){
+        String xml;
+        String derniereBalise = "</etreVivants>";
+        HttpPostRequete postRequete = new HttpPostRequete();
+    }*/
 }
