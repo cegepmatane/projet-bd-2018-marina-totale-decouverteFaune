@@ -69,7 +69,7 @@ public class VueConnection extends AppCompatActivity {
             System.out.println("GAGNER");
             if(checkBoxConnecter.isChecked()){
                 SharedPreferences.Editor editeur = preferences.edit();
-                editeur.putString("pseudo", utilisateur.getMail());
+                editeur.putString("mail", utilisateur.getMail());
                 editeur.putInt("id", utilisateur.getId());
                 editeur.putBoolean("estConnecter", true);
                 editeur.commit();

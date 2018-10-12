@@ -22,4 +22,13 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="220dp"
         android:text="Commencer" />
+
+    <TextView
+        android:id="@+id/textView_utilisateur_vue_accueil"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="210dp"
+        android:text="Vous n'êtes pas authentifier ?" />
 </RelativeLayout>
