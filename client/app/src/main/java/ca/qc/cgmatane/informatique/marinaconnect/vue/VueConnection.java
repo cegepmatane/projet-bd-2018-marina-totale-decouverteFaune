@@ -2,11 +2,13 @@ package ca.qc.cgmatane.informatique.marinaconnect.vue;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -26,6 +28,8 @@ public class VueConnection extends AppCompatActivity {
     protected UtilisateurDAO accesseurUtilisateur = UtilisateurDAO.getInstance();
 
     protected Utilisateur utilisateur;
+    SharedPreferences preferences;
+    CheckBox checkBoxConnecter;
 
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,11 @@ public class VueConnection extends AppCompatActivity {
         champMail = (EditText)findViewById(R.id.vue_se_connecter_champ_mail);
         champMdp = (EditText)findViewById(R.id.vue_se_connecter_champ_mot_de_passe);
         intentionNaviguerVueListeFaune = new Intent(this, VueListeFaune.class);
+
+        checkBoxConnecter = (CheckBox) findViewById(R.id.checkbox_se_connecter);
+
+        preferences = getSharedPreferences("detail_utilisateur", MODE_PRIVATE);
+
         Button actionNaviguerListeFaune =
                 (Button) findViewById(R.id.action_se_connecter);
 
@@ -58,6 +67,13 @@ public class VueConnection extends AppCompatActivity {
 
         if (accesseurUtilisateur.verifierConnection(utilisateur)) {
             System.out.println("GAGNER");
+            if(checkBoxConnecter.isChecked()){
+                SharedPreferences.Editor editeur = preferences.edit();
+                editeur.putString("pseudo", utilisateur.getMail());
+                editeur.putInt("id", utilisateur.getId());
+                editeur.putBoolean("estConnecter", true);
+                editeur.commit();
+            }
             startActivityForResult(intentionNaviguerVueListeFaune, ACTIVITE_LISTE_FAUNE);
         }
         else{

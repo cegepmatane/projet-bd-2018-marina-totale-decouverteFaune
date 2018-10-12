@@ -45,6 +45,13 @@
         android:inputType="textPersonName"
         android:text="" />
 
+    <CheckBox
+        android:id="@+id/checkbox_se_connecter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:checked="true"
+        android:text="Rester connecter" />
+
     <Button
         android:id="@+id/action_se_connecter"
         android:layout_width="match_parent"
