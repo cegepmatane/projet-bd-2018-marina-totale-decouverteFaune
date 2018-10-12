@@ -18,10 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".vue.VueAccueil" />
         <activity android:name=".vue.VueConnection" />
         <activity android:name=".vue.VueInscription" />
         <activity android:name=".vue.VueListeFaune" />
         <activity android:name=".vue.VueDetailFaune" />
+
 
 
     </application>

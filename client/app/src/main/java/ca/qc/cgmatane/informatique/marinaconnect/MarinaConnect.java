@@ -7,40 +7,28 @@ import android.view.View;
 import android.widget.Button;
 
 import ca.qc.cgmatane.informatique.marinaconnect.donnee.UtilisateurDAO;
+import ca.qc.cgmatane.informatique.marinaconnect.vue.VueAccueil;
 import ca.qc.cgmatane.informatique.marinaconnect.vue.VueConnection;
 import ca.qc.cgmatane.informatique.marinaconnect.vue.VueInscription;
 
 public class MarinaConnect extends AppCompatActivity {
 
-    static final public int ACTIVITE_SE_CONNECTER = 1;
-    static final public int ACTIVITE_CREER_COMPTE = 2;
-    protected UtilisateurDAO utilisateurDAO;
+    static final public int ACTIVITE_ACCUEIL = 1;
 
-
-    protected Intent intentionNaviguerSeConnecter;
-    protected Intent intentionNaviguerCreerCompte;
+    protected Intent intentionNaviguerAccueil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.vue_accueil);
-        utilisateurDAO = utilisateurDAO.getInstance();
+        setContentView(R.layout.vue_commencer);
 
 
-        intentionNaviguerSeConnecter = new Intent(this, VueConnection.class);
-        Button actionNaviguerSeConnecter = (Button) findViewById(R.id.action_naviguer_connection);
+        intentionNaviguerAccueil = new Intent(this, VueAccueil.class);
+        Button actionNaviguerSeConnecter = (Button) findViewById(R.id.vue_commencer_bouton);
         actionNaviguerSeConnecter.setOnClickListener(new View.OnClickListener(){
             public void onClick(View arg0){
-                startActivityForResult(intentionNaviguerSeConnecter, ACTIVITE_SE_CONNECTER);
+                startActivityForResult(intentionNaviguerAccueil, ACTIVITE_ACCUEIL);
             }
         });
-        intentionNaviguerCreerCompte = new Intent(this, VueInscription.class);
-        Button actionNaviguerCreerCompte = (Button) findViewById(R.id.action_naviguer_inscription);
-        actionNaviguerCreerCompte.setOnClickListener(new View.OnClickListener(){
-            public void onClick(View arg0){
-                startActivityForResult(intentionNaviguerCreerCompte, ACTIVITE_CREER_COMPTE);
-            }
-        });
-
     }
 }

@@ -13,10 +13,6 @@ public class VueDetailFaune extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_detail_faune);
-        System.out.println(etreVivant.getEspece());
-    }
-
-    public void setEtreVivant(EtreVivant etreVivant){
-        this.etreVivant = etreVivant;
+        //System.out.println(etreVivant.getEspece());
     }
 }
