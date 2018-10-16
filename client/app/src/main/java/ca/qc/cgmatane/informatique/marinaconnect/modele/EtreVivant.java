@@ -8,6 +8,16 @@ public class EtreVivant {
     protected String urlImage;
     protected String espece;
 
+    public EtreVivant getEtreVivant() {
+        return etreVivant;
+    }
+
+    public void setEtreVivant(EtreVivant etreVivant) {
+        this.etreVivant = etreVivant;
+    }
+
+    protected EtreVivant etreVivant;
+
     public int getId() {
         return id;
     }
