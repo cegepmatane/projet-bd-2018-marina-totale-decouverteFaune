@@ -4,12 +4,20 @@ public class Vote {
 
     protected int id;
     protected int idCommentaire;
-    protected int moyenne; //total values
-    protected int nombreVote; // total votes
+    protected int cote;
+    protected float moyenne;
 
-    public Vote(int moyenne, int nombreVote) {
+    public Vote(int cote, int idCommentaire) {
+        this.cote = cote;
+        this.idCommentaire = idCommentaire;
+    }
+
+    public float getMoyenne() {
+        return moyenne;
+    }
+
+    public void setMoyenne(float moyenne) {
         this.moyenne = moyenne;
-        this.nombreVote = nombreVote;
     }
 
     public int getId() {
@@ -28,19 +36,12 @@ public class Vote {
         this.idCommentaire = idCommentaire;
     }
 
-    public int getMoyenne() {
-        return moyenne;
+    public int getCote() {
+        return cote;
     }
 
-    public void setMoyenne(int moyenne) {
-        this.moyenne = moyenne;
+    public void setCote(int cote) {
+        this.cote = cote;
     }
 
-    public int getNombreVote() {
-        return nombreVote;
-    }
-
-    public void setNombreVote(int nombreVote) {
-        this.nombreVote = nombreVote;
-    }
 }
