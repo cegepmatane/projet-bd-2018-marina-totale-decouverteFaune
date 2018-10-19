@@ -10,7 +10,7 @@ class VoteDAO
         $requeteCalculerMoyenne->execute();
         return $requeteCalculerMoyenne->fetch(PDO::FETCH_OBJ);
     }
-    /*function insererUnVote($idProduit,$vote)
+    function insererUnVote($idProduit,$vote)
     {
         global $basededonnees;
         $AJOUTER_UN_VOTE = "INSERT into votes(idProduit, total_votes, total_values) VALUES(:idProduit,1, :totalValues)";
@@ -19,6 +19,7 @@ class VoteDAO
         $requeteAjouterVote->bindParam(':totalValues', $vote, PDO::PARAM_STR);
         $requeteAjouterVote->execute();
     }
+    
     function mettreAJourUneMoyenne($idProduit, $totalVote, $nombreVotes)
     {
         global $basededonnees;
@@ -34,6 +35,6 @@ class VoteDAO
         $requeteIdVote = $basededonnees->prepare($IDPRODUIT);
         $requeteIdVote->execute();
         return $requeteIdVote->fetch(PDO::FETCH_OBJ);
-    }*/
+    }
 }
 ?>
