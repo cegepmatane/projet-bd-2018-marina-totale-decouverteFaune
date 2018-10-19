@@ -6,4 +6,10 @@
     android:orientation="vertical"
     tools:context=".vue.VueDetailFaune">
 
+    <TextView
+        android:id="@+id/vue_detail_faune_espece"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Espece" />
+
 </LinearLayout>
