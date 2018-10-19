@@ -1,5 +1,6 @@
 <?php
-include "../../accesseur/VotesDAO.php"
+
+include "../../accesseur/VotesDAO.php";
 $votesDAO = new VotesDAO();
 
 $idCommentaire = $_GET["idCommentaire"];
