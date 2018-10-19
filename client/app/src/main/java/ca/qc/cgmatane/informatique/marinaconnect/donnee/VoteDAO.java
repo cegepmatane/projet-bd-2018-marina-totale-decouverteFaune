@@ -59,7 +59,7 @@ public class VoteDAO {
             DocumentBuilder parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document document = parseur.parse(new StringBufferInputStream(xml));
             Element noeudVote = (Element) document.getElementsByTagName("vote");
-            moyenne = noeudVote.getElementsByTagName("total_values").item(0).getTextContent();
+            moyenne = noeudVote.getElementsByTagName("moyenne").item(0).getTextContent();
             return Float.parseFloat(moyenne);
 
         } catch (ExecutionException e) {

@@ -12,4 +12,6 @@ $moyenne = $votesDAO->recupererMoyenneVote($idCommentaire);
 header("Content-type: text/xml");
 echo '<?xml version="1.0" encoding="UTF-8"?>';
 ?>
-<moyenne><?=$moyenne?><moyenne>
+<vote>
+<moyenne><?=$moyenne?></moyenne>
+</vote>
