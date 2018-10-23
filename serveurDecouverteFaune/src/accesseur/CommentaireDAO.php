@@ -10,7 +10,7 @@
 			$requeteListerCommentaire->execute();
 			return $requeteListerCommentaire->fetchAll(PDO::FETCH_OBJ);
 		}
-		 function ajouterCommentaire($commentaire)
+		 function ajouterCommentaire($notecommentaire,$coordgpscommentaire,$urlimagecomm,$textcom,$idetrevivant)
 		{
 			$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(notecommentaire,coordgpscommentaire,urlimagecomm,textcom,idetrevivant) VALUES('$commentaire->notecommentaire','$commentaire->coordgpscommentaire','$commentaire->urlimagecomm','$commentaire->textcom','$commentaire->idetrevivant')";
 			
