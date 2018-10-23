@@ -7,6 +7,11 @@ public class Commentaire {
     protected String textcom;
     protected int  idetrevivant;
 
+    public Commentaire() {
+
+    }
+
+
     public double getNotecommentaire() {
         return notecommentaire;
     }
