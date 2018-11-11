@@ -40,7 +40,11 @@ public class VueListeFaune extends AppCompatActivity {
             public void onItemClick(AdapterView<?> a, View v, int position, long id) {
                 Object o = listView.getItemAtPosition(position);
                 EtreVivant etreVivant = (EtreVivant) o;
-               intentionNaviguerVueDetailFaune.putExtra("idEtreVivant", etreVivant.getId()+ "");
+                intentionNaviguerVueDetailFaune.putExtra("idEtreVivant", etreVivant.getId() + "");
+                intentionNaviguerVueDetailFaune.putExtra("categorie", etreVivant.getCategorie());
+                intentionNaviguerVueDetailFaune.putExtra("urlWiki", etreVivant.getUrlWiki());
+                intentionNaviguerVueDetailFaune.putExtra("urlImage", etreVivant.getUrlImage());
+                intentionNaviguerVueDetailFaune.putExtra("espece", etreVivant.getEspece());
 
                 Toast.makeText(VueListeFaune.this, "Selection :" + " " + etreVivant.getEspece(), Toast.LENGTH_LONG).show();
 

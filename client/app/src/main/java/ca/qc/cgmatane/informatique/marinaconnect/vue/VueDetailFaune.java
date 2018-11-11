@@ -13,28 +13,23 @@ import ca.qc.cgmatane.informatique.marinaconnect.donnee.EtreVivantDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
 
 public class VueDetailFaune extends AppCompatActivity {
-    EtreVivantDAO etreVivantDAO;
     EtreVivant etreVivant;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_detail_faune);
-        //System.out.println(etreVivant.getEspece());
+        etreVivant = new EtreVivant();
         Intent intent = getIntent();
-        int id = Integer.parseInt(intent.getStringExtra("idEtreVivant"));
-        etreVivantDAO = EtreVivantDAO.getInstance();
-       List<EtreVivant> listeEtreVivant = etreVivantDAO.listerEtreVivant();
-       int i =0;
-       while (i != listeEtreVivant.size()){
-           if (listeEtreVivant.get(i).getId()== id) {
-               etreVivant = listeEtreVivant.get(i);
-               break;
-           }
-               i++;
 
-       }
+        etreVivant.setId(Integer.parseInt(intent.getStringExtra("idEtreVivant")));
+        etreVivant.setCategorie(intent.getStringExtra("categorie"));
+        etreVivant.setEspece(intent.getStringExtra("espece"));
+        etreVivant.setUrlImage(intent.getStringExtra("urlImage"));
+        etreVivant.setCategorie(intent.getStringExtra("urlWiki"));
+
+
         TextView espece = (TextView)findViewById(R.id.vue_detail_faune_espece);
-       espece.setText(etreVivant.getEspece());
+        espece.setText(etreVivant.getEspece());
     }
 
 }
