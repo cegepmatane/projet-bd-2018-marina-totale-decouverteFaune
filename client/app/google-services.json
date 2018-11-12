@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "655288861359",
+    "firebase_url": "https://mapsmarinaconnect.firebaseio.com",
+    "project_id": "mapsmarinaconnect",
+    "storage_bucket": "mapsmarinaconnect.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:655288861359:android:9c16bf48a7b8b0cf",
+        "android_client_info": {
+          "package_name": "ca.qc.cgmatane.informatique.marinaconnect"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "655288861359-4p0tk333fhtfu9mb2tvk4hovqfhmdv9e.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1eucG3UB_k5RYm30nOjFggjeqljT4uv8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

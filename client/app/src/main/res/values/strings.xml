@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">MarinaConnect</string>
+    <string name="google_map_api_key">AIzaSyB3rovmDM_DxJclkelD2rh0fbBLdk7v4Rs</string>
     <string name="desc">img</string>
 </resources>

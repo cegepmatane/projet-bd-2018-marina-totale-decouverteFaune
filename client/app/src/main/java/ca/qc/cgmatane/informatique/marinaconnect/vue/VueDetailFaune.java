@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.GoogleMap;
+
 import java.util.List;
 
 
@@ -14,6 +16,7 @@ import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
 
 public class VueDetailFaune extends AppCompatActivity {
     EtreVivant etreVivant;
+    private GoogleMap carteTerrains;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,10 @@ public class VueDetailFaune extends AppCompatActivity {
 
         TextView espece = (TextView)findViewById(R.id.vue_detail_faune_espece);
         espece.setText(etreVivant.getEspece());
+    }
+
+    public void onMapReady(GoogleMap carte){
+
     }
 
 }
