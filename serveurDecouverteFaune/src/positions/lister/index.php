@@ -22,7 +22,7 @@ foreach($listerPositions as $position)
 	<position>
 		<longitude><?=($etreVivant->longitude)?></longitude>
 		<latitude><?=($etreVivant->latitude)?></latitude>
-		<idEtreVivant><?=$etreVivant->espece?></idEtreVivant>
+		<idEtreVivant><?=$etreVivant->idEtreVivant?></idEtreVivant>
 		<id><?=$etreVivant->id?></id>
 	</position>
 	<?php
