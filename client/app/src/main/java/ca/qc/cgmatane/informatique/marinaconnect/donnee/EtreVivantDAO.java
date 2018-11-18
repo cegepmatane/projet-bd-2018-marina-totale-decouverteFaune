@@ -42,8 +42,8 @@ public class EtreVivantDAO {
             String url = "http://158.69.113.110/serveurDecouverteFaune/src/etreVivant/liste/index.php";
             String xml;
             String derniereBalise = "</etreVivants>";
-            HttpPostRequete postRequete = new HttpPostRequete();
-            xml = postRequete.execute(url, derniereBalise).get();
+            HttpGetRequete getRequete = new HttpGetRequete();
+            xml = getRequete.execute(url, derniereBalise).get();
 
             DocumentBuilder parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             @SuppressWarnings("deprecation")

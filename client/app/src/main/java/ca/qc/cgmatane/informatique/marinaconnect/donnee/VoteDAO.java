@@ -1,6 +1,7 @@
 package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 
 import android.provider.DocumentsContract;
+import android.util.Log;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -9,7 +10,12 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.io.StringBufferInputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,7 +24,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import ca.qc.cgmatane.informatique.marinaconnect.modele.Vote;
 
-public class VoteDAO {
+public class VoteDAO implements VoteURL {
     private static VoteDAO instance = null;
     protected VoteDAO vote;
 
@@ -32,16 +38,33 @@ public class VoteDAO {
     public void ajouterVoteSQL(Vote vote) {
 
         try {
-            String url = "http://158.69.113.110/serveurDecouverteFaune/src/vote/ajouter/index.php?cote=" + vote.getCote() + "&idCommentaire=" + vote.getIdCommentaire();
+            //String url = "http://158.69.113.110/serveurDecouverteFaune/src/commentaire/ajouter/index.php?notecommentaire" + commentaire.getNotecommentaire() + "coordgpscommentaire" + commentaire.getCoordgpscommentaire() + "urlimagecomm" + commentaire.getUrlimagecomm() + "textcom" + commentaire.getTextcom() + "idetrevivant" + commentaire.getIdetrevivant();
+            URL urlAjouterVote = new URL(URL_AJOUTER_VOTE);
+            HttpURLConnection connection = (HttpURLConnection) urlAjouterVote.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
 
-            String resultat;
-            HttpGetRequete getRequete = new HttpGetRequete();
+            OutputStreamWriter envoyeur = new HttpPostRequete().execute(connection).get();
 
-            resultat = getRequete.execute(url).get();
+            envoyeur.write("cote=" + vote.getCote()
+                    + "&idCommentaire=" + vote.getIdCommentaire()
+                    + "&moyenne=" + vote.getMoyenne());
+
+            Log.d("HELLO", "1 " + envoyeur);
+            envoyeur.close();
+
+            InputStream fluxLecture = new ServiceFluxDAO().execute(connection).get(); // NE PAS RETIRER NECESSAIRE AU FONCTIONNEMENT
+            Log.d("HELLO", "2 " + fluxLecture);
+            connection.disconnect();
+
 
         } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
