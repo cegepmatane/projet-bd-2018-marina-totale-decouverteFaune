@@ -21,8 +21,7 @@ foreach($listeEtreVivant as $etreVivant)
 	?>
 	<etreVivant>
 		<categorie><?=($etreVivant->categorie)?></categorie>
-		<urlwiki><?=($etreVivant->urlwiki)?></urlwiki>
-		<urlimage><?=$etreVivant->urlimage?></urlimage>
+		<information><?=($etreVivant->information)?></information>
 		<espece><?=$etreVivant->espece?></espece>
 		<id><?=$etreVivant->id?></id>
 	</etreVivant>

@@ -4,7 +4,7 @@ public class EtreVivant {
 
     protected int id;
     protected String categorie;
-    protected String urlWiki;
+    protected String information;
     protected String urlImage;
     protected String espece;
 
@@ -34,12 +34,12 @@ public class EtreVivant {
         this.categorie = categorie;
     }
 
-    public String getUrlWiki() {
-        return urlWiki;
+    public String getInformation() {
+        return information;
     }
 
-    public void setUrlWiki(String urlWiki) {
-        this.urlWiki = urlWiki;
+    public void setInformation(String information) {
+        this.information = information;
     }
 
     public String getUrlImage() {

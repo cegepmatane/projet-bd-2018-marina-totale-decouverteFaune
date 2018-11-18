@@ -33,12 +33,14 @@ public class EtreVivantDAO {
     }
 
     public EtreVivantDAO() {
-        listeEtreVivant = new ArrayList<>();
+
     }
 
 
     public List<EtreVivant> listerEtreVivant() {
         try {
+            listeEtreVivant = new ArrayList<>();
+            listeEtreVivant.clear();
             String url = "http://158.69.113.110/serveurDecouverteFaune/src/etreVivant/liste/index.php";
             String xml;
             String derniereBalise = "</etreVivants>";
@@ -58,7 +60,8 @@ public class EtreVivantDAO {
                 etreVivant.setId(Integer.parseInt(id));
                 String categorie = noeudEtreVivant.getElementsByTagName("categorie").item(0).getTextContent();
                 etreVivant.setCategorie(categorie);
-
+                String information = noeudEtreVivant.getElementsByTagName("information").item(0).getTextContent();
+                etreVivant.setInformation(information);
                 String espece = noeudEtreVivant.getElementsByTagName("espece").item(0).getTextContent();
                 etreVivant.setEspece(espece);
 

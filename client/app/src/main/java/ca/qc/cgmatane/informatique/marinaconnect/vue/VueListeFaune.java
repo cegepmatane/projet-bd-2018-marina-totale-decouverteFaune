@@ -36,6 +36,8 @@ public class VueListeFaune extends AppCompatActivity {
         setContentView(R.layout.vue_liste_faune);
         intentionNaviguerVueDetailFaune = new Intent(this, VueDetailFaune.class);
         final ListView listView = (ListView) findViewById(R.id.vue_liste_faune);
+        //etreVivants.clear();
+
         etreVivants = accesseurEtreVivant.listerEtreVivant();
         listView.setAdapter(new CustomListAdapter(this, etreVivants));
 
@@ -45,8 +47,7 @@ public class VueListeFaune extends AppCompatActivity {
                 EtreVivant etreVivant = (EtreVivant) o;
                 intentionNaviguerVueDetailFaune.putExtra("idEtreVivant", etreVivant.getId() + "");
                 intentionNaviguerVueDetailFaune.putExtra("categorie", etreVivant.getCategorie());
-                intentionNaviguerVueDetailFaune.putExtra("urlWiki", etreVivant.getUrlWiki());
-                intentionNaviguerVueDetailFaune.putExtra("urlImage", etreVivant.getUrlImage());
+                intentionNaviguerVueDetailFaune.putExtra("information", etreVivant.getInformation());
                 intentionNaviguerVueDetailFaune.putExtra("espece", etreVivant.getEspece());
 
                 Toast.makeText(VueListeFaune.this, "Selection :" + " " + etreVivant.getEspece(), Toast.LENGTH_LONG).show();

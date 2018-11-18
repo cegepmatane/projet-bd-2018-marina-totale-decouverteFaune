@@ -18,6 +18,7 @@ import org.w3c.dom.Text;
 import java.util.List;
 
 
+import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
 import ca.qc.cgmatane.informatique.marinaconnect.donnee.EtreVivantDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
@@ -39,13 +40,17 @@ public class VueDetailFaune extends AppCompatActivity {
         etreVivant.setCategorie(intent.getStringExtra("categorie"));
         etreVivant.setEspece(intent.getStringExtra("espece"));
         etreVivant.setUrlImage(intent.getStringExtra("urlImage"));
-        etreVivant.setCategorie(intent.getStringExtra("urlWiki"));
+        etreVivant.setInformation(intent.getStringExtra("information"));
 
 
         TextView espece = (TextView)findViewById(R.id.vue_detail_faune_espece);
         TextView jaiVu = (TextView) findViewById(R.id.action_j_ai_vu);
+        TextView information = (TextView) findViewById(R.id.text_information_etreVivant);
+
         espece.setText(etreVivant.getEspece()+ " :");
         jaiVu.setText("J'ai vu " + etreVivant.getEspece());
+        information.setText(etreVivant.getInformation());
+
 
         Button actionNaviguerCommentaire =
                 (Button) findViewById(R.id.action_commentaires);
@@ -64,10 +69,10 @@ public class VueDetailFaune extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch (menuItem.getItemId()) {
                     case (R.id.naviguer_se_deconnecter):
-                        SharedPreferences.Editor editeur = getSharedPreferences("details_connexion_utilisateur", MODE_PRIVATE).edit();
+                        SharedPreferences.Editor editeur = getSharedPreferences("detail_utilisateur", MODE_PRIVATE).edit();
                         editeur.clear();
                         editeur.commit();
-                        startActivity(new Intent(getApplicationContext(), VueConnection.class));
+                        startActivity(new Intent(getApplicationContext(), MarinaConnect.class));
                         finish();
                         break;
 
