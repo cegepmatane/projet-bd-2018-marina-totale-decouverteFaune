@@ -1,8 +1,12 @@
 package ca.qc.cgmatane.informatique.marinaconnect.vue;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,9 +54,27 @@ public class VueDetailFaune extends AppCompatActivity {
                 new View.OnClickListener(){
                     public void onClick(View arg0){
 
-                        startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_ACCUEIL);
+                        //startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_ACCUEIL);
                     }
                 });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.menu_swipe);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case (R.id.naviguer_se_deconnecter):
+                        SharedPreferences.Editor editeur = getSharedPreferences("details_connexion_utilisateur", MODE_PRIVATE).edit();
+                        editeur.clear();
+                        editeur.commit();
+                        startActivity(new Intent(getApplicationContext(), VueConnection.class));
+                        finish();
+                        break;
+
+                }
+                return true;
+            }
+        });
 
     }
 

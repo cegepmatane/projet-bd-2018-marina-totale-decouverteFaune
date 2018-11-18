@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:id="@+id/naviguer_acceuil"
+        android:title="Acceuil"/>
+
+    <item android:id="@+id/naviguer_se_deconnecter"
+        android:title="Se déconnecter"/>
+
+
+
+</menu>

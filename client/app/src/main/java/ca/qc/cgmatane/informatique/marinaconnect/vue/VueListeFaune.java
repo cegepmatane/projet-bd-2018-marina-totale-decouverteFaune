@@ -1,9 +1,12 @@
 package ca.qc.cgmatane.informatique.marinaconnect.vue;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -24,7 +27,7 @@ public class VueListeFaune extends AppCompatActivity {
     protected EtreVivantDAO accesseurEtreVivant = EtreVivantDAO.getInstance();
     List<EtreVivant> etreVivants;
 
-    static final public int ACTIVITE_DETAIL_FAUNE= 1;
+    static final public int ACTIVITE_DETAIL_FAUNE = 1;
     protected Intent intentionNaviguerVueDetailFaune;
 
 
@@ -32,7 +35,7 @@ public class VueListeFaune extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_liste_faune);
         intentionNaviguerVueDetailFaune = new Intent(this, VueDetailFaune.class);
-        final ListView listView = (ListView)findViewById(R.id.vue_liste_faune);
+        final ListView listView = (ListView) findViewById(R.id.vue_liste_faune);
         etreVivants = accesseurEtreVivant.listerEtreVivant();
         listView.setAdapter(new CustomListAdapter(this, etreVivants));
 
@@ -51,6 +54,23 @@ public class VueListeFaune extends AppCompatActivity {
                 startActivityForResult(intentionNaviguerVueDetailFaune, ACTIVITE_DETAIL_FAUNE);
             }
         });
+
+        NavigationView navigationView = (NavigationView) findViewById(R.id.menu_swipe);
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()) {
+                    case (R.id.naviguer_se_deconnecter):
+                        SharedPreferences.Editor editeur = getSharedPreferences("detail_utilisateur", MODE_PRIVATE).edit();
+                        editeur.clear();
+                        editeur.commit();
+                        startActivity(new Intent(getApplicationContext(), MarinaConnect.class));
+                        finish();
+                        break;
+
+                }
+                return true;
+            }
+        });
     }
 }
-

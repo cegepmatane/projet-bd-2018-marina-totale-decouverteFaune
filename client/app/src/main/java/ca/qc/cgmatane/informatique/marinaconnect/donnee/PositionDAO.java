@@ -27,7 +27,7 @@ public class PositionDAO {
         return instance;
     }
 
-    public float lirePositionsEtreVivant(int idEtreVivant) {
+    /*public float lirePositionsEtreVivant(int idEtreVivant) {
         String url = "http://158.69.113.110/serveurDecouverteFaune/src/vote/liste/index.php";
         String moyenne;
         String derniereBalise = "</positions>";
@@ -35,7 +35,7 @@ public class PositionDAO {
         arguments.put("idEtreVivant", "" + idEtreVivant);
 
         HttpPostRequete postRequete = new HttpPostRequete();
-        postRequete.execute(arguments);
+        //postRequete.execute(arguments);
 
         try {
             xml = postRequete.execute(url,String.valueOf(idEtreVivant)).get();
@@ -57,5 +57,5 @@ public class PositionDAO {
             e.printStackTrace();
         }
         return 0;
-    }
+    }*/
 }
