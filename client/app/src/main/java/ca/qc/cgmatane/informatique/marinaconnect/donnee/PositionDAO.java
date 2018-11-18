@@ -6,8 +6,6 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.StringBufferInputStream;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -27,18 +25,17 @@ public class PositionDAO {
         return instance;
     }
 
-    /*public float lirePositionsEtreVivant(int idEtreVivant) {
-        String url = "http://158.69.113.110/serveurDecouverteFaune/src/vote/liste/index.php";
+    public float lirePositionsEtreVivant(int idEtreVivant) {
+        String url = "http://158.69.113.110/serveurDecouverteFaune/src/vote/liste/index.php?idEtreVivant="+idEtreVivant;
         String moyenne;
         String derniereBalise = "</positions>";
-        Map<String,String> arguments = new HashMap<>();
-        arguments.put("idEtreVivant", "" + idEtreVivant);
+        String xml;
 
-        HttpPostRequete postRequete = new HttpPostRequete();
+        HttpGetRequete getRequete = new HttpGetRequete();
         //postRequete.execute(arguments);
 
         try {
-            xml = postRequete.execute(url,String.valueOf(idEtreVivant)).get();
+            xml = getRequete.execute(url,String.valueOf(idEtreVivant)).get();
             DocumentBuilder parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document document = parseur.parse(new StringBufferInputStream(xml));
             Element noeudVote = (Element) document.getElementsByTagName("vote");
@@ -57,5 +54,5 @@ public class PositionDAO {
             e.printStackTrace();
         }
         return 0;
-    }*/
+    }
 }
