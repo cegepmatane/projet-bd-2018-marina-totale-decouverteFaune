@@ -85,6 +85,8 @@ public class VueDetailFaune extends AppCompatActivity {
 
     public void onMapReady(GoogleMap carte){
 
+
+
     }
 
 }

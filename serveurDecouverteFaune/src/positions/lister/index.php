@@ -3,7 +3,8 @@
 	include "../../accesseur/PositionsDAO.php";
 	$positionsDAO = new PositionsDAO();
 	//print_r($etreVivantDAO);
-	$listerPositions = $positionsDAO->listerPositions();
+	$ID_ETRE_VIVANT = $_GET["idEtreVivant"];
+	$listerPositions = $positionsDAO->listerPositions($ID_ETRE_VIVANT);
 	//print_r($listePensees);
 	
 ?>
@@ -20,10 +21,10 @@ foreach($listerPositions as $position)
 {
 	?>
 	<position>
-		<longitude><?=($etreVivant->longitude)?></longitude>
-		<latitude><?=($etreVivant->latitude)?></latitude>
-		<idEtreVivant><?=$etreVivant->idEtreVivant?></idEtreVivant>
-		<id><?=$etreVivant->id?></id>
+		<longitude><?=($position->longitude)?></longitude>
+		<latitude><?=($position->latitude)?></latitude>
+		<idEtreVivant><?=$position->idEtreVivant?></idEtreVivant>
+		<id><?=$position->id?></id>
 	</position>
 	<?php
 }
