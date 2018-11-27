@@ -4,7 +4,7 @@
 	{
 		function listerPositions($idEtreVivant)
 		{			
-			$LISTER_POSITIONS = 'SELECT * FROM position WHERE "idEtreVivant" = 2 ';
+			$LISTER_POSITIONS = 'SELECT * FROM position WHERE "idEtreVivant" = ' . $idEtreVivant;
 			global $basededonnees;
 			$requeteListerPositons = $basededonnees->prepare($LISTER_POSITIONS);
 			$requeteListerPositons->execute();

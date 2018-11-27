@@ -18,6 +18,7 @@ import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.w3c.dom.Text;
@@ -40,7 +41,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
 
     //private GoogleMap carte;
     private List<Position> listePositions;
-
+    static final public int ACTIVITE_COMMENTAIRE = 1;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -107,18 +108,25 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         LatLng camera = new LatLng(48.851552, -67.537350);
         System.out.println( "MAP");
 
-        carte.moveCamera(CameraUpdateFactory.newLatLng(camera));
+        carte.moveCamera(CameraUpdateFactory.newLatLngZoom(camera,12));
         listePositions = new ArrayList<>();
 
         listePositions = accesseurPosition.lirePositionsEtreVivant(etreVivant.getId());
         System.out.println( accesseurPosition.lirePositionsEtreVivant(etreVivant.getId()));
 
         for(Position position : listePositions){
-            //System.out.println("POSITIONS : ");
-
-            //System.out.println(position.getLongitudeLatitude());
-            carte.addMarker(new MarkerOptions().position(position.getLongitudeLatitude()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            carte.addMarker(new MarkerOptions().position(position.getLongitudeLatitude()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).setTag(position);
         }
+
+        carte.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                Position posMarque = (Position) marker.getTag();
+                System.out.println(posMarque.getId());
+                startActivity(intentionNaviguerVueCommentaire);
+                return false;
+            }
+        });
 
     }
 

@@ -43,6 +43,8 @@
         <activity android:name=".vue.VueInscription" />
         <activity android:name=".vue.VueListeFaune" />
         <activity android:name=".vue.VueDetailFaune" />
+        <activity android:name=".vue.VueCommentaire" />
+
 
         <meta-data
             android:name="com.google.android.gms.version"
