@@ -1,5 +1,7 @@
 package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -7,6 +9,7 @@ import org.xml.sax.SAXException;
 
 import java.io.IOException;
 import java.io.StringBufferInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -31,7 +34,10 @@ public class PositionDAO implements PositionsURL{
     }
 
     public List<Position> lirePositionsEtreVivant(int idEtreVivant) {
-        String url = URL_LISTER_POSITIONS+idEtreVivant;
+        listePositions = new ArrayList<>();
+        listePositions.clear();
+
+        String url = URL_LISTER_POSITIONS+"?idEtreVivant="+idEtreVivant;
         String moyenne;
         String derniereBalise = "</positions>";
         String xml;
@@ -40,25 +46,32 @@ public class PositionDAO implements PositionsURL{
         //postRequete.execute(arguments);
 
         try {
-            xml = getRequete.execute(url,String.valueOf(idEtreVivant)).get();
-            Position position = new Position();
+            xml = getRequete.execute(url, derniereBalise).get();
             DocumentBuilder parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             @SuppressWarnings("deprecation")
             Document document = parseur.parse(new StringBufferInputStream(xml));
-            String racine = document.getDocumentElement().getNodeName();
-            NodeList listeNoeudEtreVivant = document.getElementsByTagName("etreVivant");
+            NodeList listeNoeudPositions = document.getElementsByTagName("position");
 
-            for (int pos= 0; pos < listeNoeudEtreVivant.getLength(); pos++){
-                Element noeudVote = (Element) document.getElementsByTagName("vote");
-                String id = noeudVote.getElementsByTagName("id").item(0).getTextContent();
+            for (int pos= 0; pos < listeNoeudPositions.getLength(); pos++){
+                Position position = new Position();
+
+                Element noeudPosition = (Element) listeNoeudPositions.item(pos);
+
+                String id = noeudPosition.getElementsByTagName("id").item(0).getTextContent();
                 position.setId(Integer.valueOf(id));
-                String longitude = noeudVote.getElementsByTagName("longitude").item(0).getTextContent();
-                position.setLongitude(Double.valueOf(longitude));
-                String latitude = noeudVote.getElementsByTagName("latitude").item(0).getTextContent();
-                position.setLatitude(Double.valueOf(longitude));
+                String longitude = noeudPosition.getElementsByTagName("longitude").item(0).getTextContent();
+                //position.setLongitude(Double.valueOf(longitude));
+                String latitude = noeudPosition.getElementsByTagName("latitude").item(0).getTextContent();
+                LatLng longlat = new LatLng(Double.valueOf(longitude),Double.valueOf(latitude));
+                position.setLongitudeLatitude(longlat);
+                //position.setLatitude(Double.valueOf(longitude));
                 position.setIdEtreVivant(idEtreVivant);
+                System.out.println("POSITIONS : ");
+                System.out.println(position.getLongitudeLatitude());
                 listePositions.add(position);
             }
+
+
             return listePositions ;
 
         } catch (ExecutionException e) {

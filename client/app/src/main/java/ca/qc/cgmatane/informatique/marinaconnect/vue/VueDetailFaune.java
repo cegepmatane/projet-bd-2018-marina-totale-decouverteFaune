@@ -11,22 +11,36 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
 import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
 import ca.qc.cgmatane.informatique.marinaconnect.donnee.EtreVivantDAO;
+import ca.qc.cgmatane.informatique.marinaconnect.donnee.PositionDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
+import ca.qc.cgmatane.informatique.marinaconnect.modele.Position;
 
-public class VueDetailFaune extends AppCompatActivity {
+public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallback {
     EtreVivant etreVivant;
     Intent intentionNaviguerVueCommentaire;
-    private GoogleMap carteTerrains;
+    protected PositionDAO accesseurPosition = PositionDAO.getInstance();
+
+    //private GoogleMap carte;
+    private List<Position> listePositions;
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +48,10 @@ public class VueDetailFaune extends AppCompatActivity {
         etreVivant = new EtreVivant();
         Intent intent = getIntent();
         intentionNaviguerVueCommentaire = new Intent(this, VueCommentaire.class);
+
+        MapFragment fragementCarte = (MapFragment) getFragmentManager().findFragmentById(R.id.carte_terrains);
+        fragementCarte.getMapAsync(this);
+
 
 
         etreVivant.setId(Integer.parseInt(intent.getStringExtra("idEtreVivant")));
@@ -50,6 +68,8 @@ public class VueDetailFaune extends AppCompatActivity {
         espece.setText(etreVivant.getEspece()+ " :");
         jaiVu.setText("J'ai vu " + etreVivant.getEspece());
         information.setText(etreVivant.getInformation());
+
+
 
 
         Button actionNaviguerCommentaire =
@@ -84,8 +104,21 @@ public class VueDetailFaune extends AppCompatActivity {
     }
 
     public void onMapReady(GoogleMap carte){
+        LatLng camera = new LatLng(48.851552, -67.537350);
+        System.out.println( "MAP");
 
+        carte.moveCamera(CameraUpdateFactory.newLatLng(camera));
+        listePositions = new ArrayList<>();
 
+        listePositions = accesseurPosition.lirePositionsEtreVivant(etreVivant.getId());
+        System.out.println( accesseurPosition.lirePositionsEtreVivant(etreVivant.getId()));
+
+        for(Position position : listePositions){
+            //System.out.println("POSITIONS : ");
+
+            //System.out.println(position.getLongitudeLatitude());
+            carte.addMarker(new MarkerOptions().position(position.getLongitudeLatitude()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+        }
 
     }
 

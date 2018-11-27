@@ -4,24 +4,34 @@ import android.os.AsyncTask;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.Scanner;
 
 public class HttpGetRequete extends AsyncTask<String, Void, String> {
 
     public static final String METHODE_REQUETE = "GET";
     public static final int TEMPS_LECTURE = 15000;
     public static final int TEMPS_CONNECTION = 15000;
+    private String xml = null;
 
 
     @Override
     protected String doInBackground(String... param) {
         String stringUrl = param[0];
+        String delimiteur = param[1];
         String resultat;
         String inputLine;
+        xml = recupererXML(stringUrl, delimiteur);
 
-        try{
+        if(null == xml)
+            return null;
+
+        return xml;
+
+      /*  try{
             //Creation de l'objet URL
             URL monUrl = new URL(stringUrl);
 
@@ -53,12 +63,25 @@ public class HttpGetRequete extends AsyncTask<String, Void, String> {
             e.printStackTrace();
             resultat = null;
         }
-        return resultat;
+        return resultat;*/
 
     }
 
     protected void onPostExecute(String result){
         super.onPostExecute(result);
+    }
+
+    private String recupererXML(String stringUrlXML, String delimiteur){
+        try{
+            URL urlXML = new URL(stringUrlXML);
+            InputStream flux = urlXML.openConnection().getInputStream();
+            Scanner lecteur = new Scanner(flux).useDelimiter(delimiteur);
+            xml = lecteur.next() + delimiteur;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return xml;
     }
 
 
