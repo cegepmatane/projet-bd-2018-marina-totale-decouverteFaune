@@ -26,9 +26,7 @@
         android:id="@+id/vue_detail_faune_espece"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="22dp"
         android:layout_marginTop="21dp"
         android:text="Espece"
         android:textSize="36sp" />
@@ -47,7 +45,7 @@
         android:text="Commentaires" />
 
     <Button
-        android:id="@+id/action_j_ai_vu"
+        android:id="@+id/action_ajouter_commentaire"
         android:layout_width="153dp"
         android:layout_height="61dp"
         android:layout_alignTop="@+id/action_commentaires"

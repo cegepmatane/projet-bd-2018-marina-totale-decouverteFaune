@@ -15,20 +15,25 @@
         android:layout_alignParentTop="true"
         android:layout_marginStart="76dp"
         android:layout_marginLeft="76dp"
+        android:padding="30dp"
+        android:text="Commentaire"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:text="Commentaire" />
+        android:textStyle="bold" />
 
-    <com.google.android.gms.maps.MapView
-        android:id="@+id/mapView2"
-        android:layout_width="376dp"
-        android:layout_height="97dp"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
+    <fragment
+        android:id="@+id/carte_vue_commentaire"
+        android:name="com.google.android.gms.maps.MapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="233dp"
         android:layout_alignParentTop="true"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="72dp" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="81dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginBottom="253dp" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/menu_swipe"

@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -21,7 +20,6 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +27,6 @@ import java.util.List;
 
 import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
-import ca.qc.cgmatane.informatique.marinaconnect.donnee.EtreVivantDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.donnee.PositionDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.Position;
@@ -37,11 +34,13 @@ import ca.qc.cgmatane.informatique.marinaconnect.modele.Position;
 public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallback {
     EtreVivant etreVivant;
     Intent intentionNaviguerVueCommentaire;
+    Intent intentionNaviguerVueAjouterCommentaire;
     protected PositionDAO accesseurPosition = PositionDAO.getInstance();
 
     //private GoogleMap carte;
     private List<Position> listePositions;
     static final public int ACTIVITE_COMMENTAIRE = 1;
+    static final public int ACTIVITE_AJOUT_COMMENTAIRE = 2;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,10 +48,10 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         etreVivant = new EtreVivant();
         Intent intent = getIntent();
         intentionNaviguerVueCommentaire = new Intent(this, VueCommentaire.class);
+        intentionNaviguerVueAjouterCommentaire = new Intent(this, VueAjouterCommentaire.class);
 
         MapFragment fragementCarte = (MapFragment) getFragmentManager().findFragmentById(R.id.carte_terrains);
         fragementCarte.getMapAsync(this);
-
 
 
         etreVivant.setId(Integer.parseInt(intent.getStringExtra("idEtreVivant")));
@@ -63,7 +62,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
 
 
         TextView espece = (TextView)findViewById(R.id.vue_detail_faune_espece);
-        TextView jaiVu = (TextView) findViewById(R.id.action_j_ai_vu);
+        TextView jaiVu = (TextView) findViewById(R.id.action_ajouter_commentaire);
         TextView information = (TextView) findViewById(R.id.text_information_etreVivant);
 
         espece.setText(etreVivant.getEspece()+ " :");
@@ -71,16 +70,14 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         information.setText(etreVivant.getInformation());
 
 
+        Button actionNaviguerAjouterCommentaire =
+                (Button) findViewById(R.id.action_ajouter_commentaire);
 
-
-        Button actionNaviguerCommentaire =
-                (Button) findViewById(R.id.action_commentaires);
-
-        actionNaviguerCommentaire.setOnClickListener(
+        actionNaviguerAjouterCommentaire.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View arg0){
 
-                        //startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_ACCUEIL);
+                        startActivityForResult(intentionNaviguerVueAjouterCommentaire, ACTIVITE_AJOUT_COMMENTAIRE);
                     }
                 });
 
@@ -123,7 +120,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
             public boolean onMarkerClick(Marker marker) {
                 Position posMarque = (Position) marker.getTag();
                 System.out.println(posMarque.getId());
-                startActivity(intentionNaviguerVueCommentaire);
+                startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_COMMENTAIRE);
                 return false;
             }
         });
