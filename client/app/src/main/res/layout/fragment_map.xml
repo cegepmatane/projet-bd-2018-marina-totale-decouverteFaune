@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <fragment
-        android:id="@+id/carte_terrains"
+        android:id="@+id/carte_vue_commentaire"
         android:name="com.google.android.gms.maps.MapFragment"
         android:layout_width="match_parent"
         android:layout_height="486dp"
@@ -38,7 +38,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/carte_terrains"
-        android:layout_alignStart="@+id/fragment_map"
         android:layout_marginBottom="-81dp"
         android:text="Toucher l'endroit où vous l'avez vu." />
 
