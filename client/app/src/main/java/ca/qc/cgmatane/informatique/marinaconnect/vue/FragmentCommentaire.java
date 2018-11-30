@@ -12,6 +12,7 @@ import android.widget.EditText;
 import com.google.android.gms.maps.model.LatLng;
 
 import ca.qc.cgmatane.informatique.marinaconnect.R;
+import ca.qc.cgmatane.informatique.marinaconnect.donnee.CommentaireDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.Commentaire;
 
 public class FragmentCommentaire extends Fragment {
@@ -20,6 +21,8 @@ public class FragmentCommentaire extends Fragment {
     Commentaire commentaire;
     protected EditText champCommentaire;
     int idEtreVivant;
+
+    protected CommentaireDAO accesseurCommentaire = CommentaireDAO.getInstance();
 
 
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -32,7 +35,7 @@ public class FragmentCommentaire extends Fragment {
         super.onViewCreated(vue, savedInstanceState);
 
         champCommentaire = (EditText) vue.findViewById(R.id.fragment_ajout_text_commentaire);
-        Button boutonAjout = (Button) vue.findViewById(R.id.action_ajouter_commentaire);
+        Button boutonAjout = (Button) vue.findViewById(R.id.action_fragment_navigation_detail);
 
         boutonAjout.setOnClickListener(
                 new View.OnClickListener(){
@@ -41,14 +44,13 @@ public class FragmentCommentaire extends Fragment {
                         //startActivityForResult(intentionNaviguerAccueil, ACTIVITE_ACCUEIL);
                     }
                 });
-
-
     }
 
     private void enregistrerCommentaire(){
         commentaire = new Commentaire(idEtreVivant,champCommentaire.getText().toString() );
-        
+        accesseurCommentaire.ajouteCommentaireSQL(commentaire);
     }
+
     public void setLatitudeLongitude(LatLng latLng){
         this.latitudeLongitude = latLng;
     }

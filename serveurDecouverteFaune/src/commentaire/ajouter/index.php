@@ -2,25 +2,16 @@
  
  include "../../accesseur/CommentaireDAO.php";
  $commentaireDAO = new CommentaireDAO();
- $commentaire->notecommentaire= $_GET['notecommentaire'];
- $commentaire->coordgpscommentaire= $_GET['coordgpscommentaire'];
- $commentaire->urlimagecomm= $_GET['urlimagecomm'];
- $commentaire->textcom= $_GET['textcom'];
- $commentaire-> idetrevivant= $_GET['idetrevivant'];
+ $commentaire = new stdClass();
+
+ $commentaire->notecommentaire= $_POST['notecommentaire'];
+ $commentaire->coordgpscommentaire= $_POST['coordgpscommentaire'];
+ $commentaire->urlimagecomm= $_POST['urlimagecomm'];
+ $commentaire->textcom= $_POST['textcom'];
+ $commentaire->idetrevivant= $_POST['idetrevivant'];
  
- $commentaireDAO->ajouterCommentaire($notecommentaire,$coordgpscommentaire,$urlimagecomm,$textcom,$idetrevivant);
+ $commentaireDAO->ajouterCommentaire($commentaire);
  
  
  
  ?>
- <?php 
-    header("Content-type: text/xml");
-    echo '<?xml version="1.0" encoding="UTF-8"?>';
-?>
-<actions>
-    <action>
-	    <type>ajouterCommentaire</type>
-        <succes><?=$succes?></succes>
-	    <message></message>
-    </action>
-</actions>
