@@ -20,6 +20,7 @@ import ca.qc.cgmatane.informatique.marinaconnect.R;
 
 public class FragmentMap extends Fragment implements OnMapReadyCallback {
     private static final String TAG = "fragmentMap";
+    int idEtreVivant;
     @Nullable
     @Override
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -29,8 +30,8 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
     }
     @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
+    public void onViewCreated(View vue, Bundle savedInstanceState) {
+        super.onViewCreated(vue, savedInstanceState);
 
         SupportMapFragment mapFragment = (SupportMapFragment)getChildFragmentManager().findFragmentById(R.id.carte_vue_ajout_commentaire);
         mapFragment.getMapAsync(FragmentMap.this);
@@ -45,11 +46,17 @@ public class FragmentMap extends Fragment implements OnMapReadyCallback {
             public void onMapClick(LatLng latLng) {
                 FragmentCommentaire fragmentCommentaire = new FragmentCommentaire();
                 fragmentCommentaire.setLatitudeLongitude(latLng);
+                fragmentCommentaire.setIdEtreVivant(idEtreVivant);
                 FragmentTransaction fragment = getFragmentManager().beginTransaction();
                 fragment.replace(R.id.fragment_container, fragmentCommentaire);
                 fragment.commit();
 
             }
         });
+    }
+
+    public void setIdEtreVivant(int idEtreVivant)
+    {
+        this.idEtreVivant = idEtreVivant;
     }
 }

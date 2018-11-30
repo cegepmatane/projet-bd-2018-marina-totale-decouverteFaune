@@ -13,11 +13,13 @@ public class VueAjouterCommentaire extends AppCompatActivity {
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_ajout_commentaire);
+        Intent intention = getIntent();
 
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
 
+        FragmentMap fragmentMap = new FragmentMap();
+        fragmentMap.setIdEtreVivant(Integer.parseInt(intention.getStringExtra("idEtreVivant")));
         fragmentTransaction.add(R.id.fragment_container,new FragmentMap());
         fragmentTransaction.commit();
     }
-
 }

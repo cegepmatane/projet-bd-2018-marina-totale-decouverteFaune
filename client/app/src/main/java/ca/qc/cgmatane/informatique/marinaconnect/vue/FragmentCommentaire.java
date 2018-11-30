@@ -6,24 +6,55 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
 
 import com.google.android.gms.maps.model.LatLng;
 
 import ca.qc.cgmatane.informatique.marinaconnect.R;
+import ca.qc.cgmatane.informatique.marinaconnect.modele.Commentaire;
 
 public class FragmentCommentaire extends Fragment {
 
     LatLng latitudeLongitude;
+    Commentaire commentaire;
+    protected EditText champCommentaire;
+    int idEtreVivant;
+
 
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
         View vue = inflater.inflate(R.layout.fragment_ajout_commentaire, container, false);
-        System.out.println("LATLNG : " + latitudeLongitude);
         return vue;
     }
+    @Override
+    public void onViewCreated(View vue, Bundle savedInstanceState) {
+        super.onViewCreated(vue, savedInstanceState);
 
+        champCommentaire = (EditText) vue.findViewById(R.id.fragment_ajout_text_commentaire);
+        Button boutonAjout = (Button) vue.findViewById(R.id.action_ajouter_commentaire);
+
+        boutonAjout.setOnClickListener(
+                new View.OnClickListener(){
+                    public void onClick(View arg0){
+                        enregistrerCommentaire();
+                        //startActivityForResult(intentionNaviguerAccueil, ACTIVITE_ACCUEIL);
+                    }
+                });
+
+
+    }
+
+    private void enregistrerCommentaire(){
+        commentaire = new Commentaire(idEtreVivant,champCommentaire.getText().toString() );
+        
+    }
     public void setLatitudeLongitude(LatLng latLng){
         this.latitudeLongitude = latLng;
+    }
+    public void setIdEtreVivant(int idEtreVivant)
+    {
+        this.idEtreVivant = idEtreVivant;
     }
 
 }

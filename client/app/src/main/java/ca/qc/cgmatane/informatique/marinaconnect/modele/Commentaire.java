@@ -2,12 +2,15 @@ package ca.qc.cgmatane.informatique.marinaconnect.modele;
 
 public class Commentaire {
     protected double notecommentaire;
-    protected int coordgpscommentaire;
     protected String urlimagecomm;
     protected String textcom;
-    protected int  idetrevivant;
+    protected int idetrevivant;
 
     public Commentaire() {
+
+    }
+    public Commentaire(int idetrevivant, String textcom)
+    {
 
     }
 
@@ -20,13 +23,6 @@ public class Commentaire {
         this.notecommentaire = notecommentaire;
     }
 
-    public int getCoordgpscommentaire() {
-        return coordgpscommentaire;
-    }
-
-    public void setCoordgpscommentaire(int coordgpscommentaire) {
-        this.coordgpscommentaire = coordgpscommentaire;
-    }
 
     public String getUrlimagecomm() {
         return urlimagecomm;

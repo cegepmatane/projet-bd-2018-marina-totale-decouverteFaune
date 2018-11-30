@@ -72,13 +72,13 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         information.setText(etreVivant.getInformation());
 
 
-        Button actionNaviguerAjouterCommentaire =
+        final Button actionNaviguerAjouterCommentaire =
                 (Button) findViewById(R.id.action_ajouter_commentaire);
 
         actionNaviguerAjouterCommentaire.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View arg0){
-
+                        intentionNaviguerVueAjouterCommentaire.putExtra("idEtreVivant", etreVivant.getId() + "");
                         startActivityForResult(intentionNaviguerVueAjouterCommentaire, ACTIVITE_AJOUT_COMMENTAIRE);
                     }
                 });
