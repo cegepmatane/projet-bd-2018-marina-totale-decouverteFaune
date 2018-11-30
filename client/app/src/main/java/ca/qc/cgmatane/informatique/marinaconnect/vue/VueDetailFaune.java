@@ -51,6 +51,8 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         intentionNaviguerVueAjouterCommentaire = new Intent(this, VueAjouterCommentaire.class);
 
         MapFragment fragementCarte = (MapFragment) getFragmentManager().findFragmentById(R.id.carte_terrains);
+        System.out.println("fragment carte : ");
+        System.out.println(fragementCarte);
         fragementCarte.getMapAsync(this);
 
 

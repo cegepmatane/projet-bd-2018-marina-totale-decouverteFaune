@@ -13,7 +13,6 @@
 
     </FrameLayout>
 
-
     <android.support.design.widget.NavigationView
         android:id="@+id/menu_swipe"
         android:layout_width="match_parent"
