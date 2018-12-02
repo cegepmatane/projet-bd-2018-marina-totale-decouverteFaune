@@ -33,10 +33,12 @@ public class CommentaireDAO implements CommentaireURL {
 
             OutputStreamWriter envoyeur = new HttpPostRequete().execute(connection).get();
 
-            envoyeur.write("noteCommentaire=" + commentaire.getNotecommentaire()
+            /*envoyeur.write("noteCommentaire=" + commentaire.getNotecommentaire()
             + "&urlimagecomm=" + commentaire.getUrlimagecomm()
             + "&textcom=" + commentaire.getTextcom()
-            + "&idetrevivant=" + commentaire.getIdetrevivant());
+            + "&idetrevivant=" + commentaire.getIdetrevivant());*/
+            envoyeur.write("textcom=" + commentaire.getTextcom()
+                    + "&idetrevivant=" + commentaire.getIdetrevivant());
 
             Log.d("HELLO", "1 " + envoyeur);
             envoyeur.close();
