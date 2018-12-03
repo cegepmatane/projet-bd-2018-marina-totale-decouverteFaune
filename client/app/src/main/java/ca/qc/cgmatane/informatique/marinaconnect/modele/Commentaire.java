@@ -1,19 +1,42 @@
 package ca.qc.cgmatane.informatique.marinaconnect.modele;
 
+import com.google.android.gms.maps.model.LatLng;
+
 public class Commentaire {
     protected double notecommentaire;
     protected String urlimagecomm;
     protected String textcom;
     protected int idetrevivant;
+    protected int id;
+    protected LatLng longitudeLatitude;
+
 
     public Commentaire() {
 
     }
-    public Commentaire(int idetrevivant, String textcom)
+    public Commentaire(int idetrevivant, String textcom, LatLng longitudeLatitude)
     {
+        this.idetrevivant = idetrevivant;
+        this.textcom = textcom;
+        this.longitudeLatitude = longitudeLatitude;
 
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public LatLng getLongitudeLatitude() {
+        return longitudeLatitude;
+    }
+
+    public void setLongitudeLatitude(LatLng longitudeLatitude) {
+        this.longitudeLatitude = longitudeLatitude;
+    }
 
     public double getNotecommentaire() {
         return notecommentaire;

@@ -2,20 +2,37 @@ package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
+import org.w3c.dom.Comment;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.StringBufferInputStream;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.parsers.ParserConfigurationException;
 
 import ca.qc.cgmatane.informatique.marinaconnect.modele.Commentaire;
 
 public class CommentaireDAO implements CommentaireURL {
     private static  CommentaireDAO instance = null;
     protected  CommentaireDAO commentaire;
+    List<Commentaire> listePositions;
+
 
     public static CommentaireDAO getInstance() {
         if (null == instance)
@@ -37,8 +54,14 @@ public class CommentaireDAO implements CommentaireURL {
             + "&urlimagecomm=" + commentaire.getUrlimagecomm()
             + "&textcom=" + commentaire.getTextcom()
             + "&idetrevivant=" + commentaire.getIdetrevivant());*/
+            System.out.println("POSITIONS !!");
+            Double latitude = commentaire.getLongitudeLatitude().latitude;
+            Double longitude = commentaire.getLongitudeLatitude().longitude;
             envoyeur.write("textcom=" + commentaire.getTextcom()
-                    + "&idetrevivant=" + commentaire.getIdetrevivant());
+                    +"&idetrevivant=" + commentaire.getIdetrevivant()
+                    +"&latitude=" + latitude
+                    +"&longitude=" + longitude);
+            System.out.println(latitude);
 
             Log.d("HELLO", "1 " + envoyeur);
             envoyeur.close();
@@ -48,7 +71,7 @@ public class CommentaireDAO implements CommentaireURL {
             connection.disconnect();
 
 
-            } catch (ExecutionException e) {
+        } catch (ExecutionException e) {
             e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
@@ -59,4 +82,58 @@ public class CommentaireDAO implements CommentaireURL {
         }
 
     }
+
+    public List<Commentaire> listerPositionsCommentaire(int idEtreVivant) {
+
+        listePositions = new ArrayList<>();
+        listePositions.clear();
+
+        String url = URL_LISTER_POSITIONS+"?idEtreVivant="+idEtreVivant;
+        String moyenne;
+        String derniereBalise = "</commentaires>";
+        String xml;
+
+        HttpGetRequete getRequete = new HttpGetRequete();
+
+        try {
+            xml = getRequete.execute(url, derniereBalise).get();
+            DocumentBuilder parseur = DocumentBuilderFactory.newInstance().newDocumentBuilder();
+            @SuppressWarnings("deprecation")
+            Document document = parseur.parse(new StringBufferInputStream(xml));
+            NodeList listeNoeudPositions = document.getElementsByTagName("commentaire");
+
+            for (int pos= 0; pos < listeNoeudPositions.getLength(); pos++){
+                Commentaire commentaire = new Commentaire();
+                Element noeudPosition = (Element) listeNoeudPositions.item(pos);
+                String id = noeudPosition.getElementsByTagName("id").item(0).getTextContent();
+                commentaire.setId(Integer.valueOf(id));
+                String longitude = noeudPosition.getElementsByTagName("longitude").item(0).getTextContent();
+                String latitude = noeudPosition.getElementsByTagName("latitude").item(0).getTextContent();
+                if(longitude == "" & latitude == ""){
+                    return null;
+                }
+                LatLng longlat = new LatLng(Double.valueOf(longitude),Double.valueOf(latitude));
+                commentaire.setLongitudeLatitude(longlat);
+                commentaire.setIdetrevivant(idEtreVivant);
+
+                listePositions.add(commentaire);
+            }
+
+
+            return listePositions ;
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
 }

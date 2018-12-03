@@ -27,7 +27,9 @@ import java.util.List;
 
 import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
+import ca.qc.cgmatane.informatique.marinaconnect.donnee.CommentaireDAO;
 import ca.qc.cgmatane.informatique.marinaconnect.donnee.PositionDAO;
+import ca.qc.cgmatane.informatique.marinaconnect.modele.Commentaire;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.EtreVivant;
 import ca.qc.cgmatane.informatique.marinaconnect.modele.Position;
 
@@ -35,10 +37,13 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
     EtreVivant etreVivant;
     Intent intentionNaviguerVueCommentaire;
     Intent intentionNaviguerVueAjouterCommentaire;
-    protected PositionDAO accesseurPosition = PositionDAO.getInstance();
+    //protected PositionDAO accesseurPosition = PositionDAO.getInstance();
+    protected CommentaireDAO accesseurCommentaire = CommentaireDAO.getInstance();
 
     //private GoogleMap carte;
-    private List<Position> listePositions;
+    //private List<Position> listePositions;
+    private List<Commentaire> listeCommentaire;
+
     static final public int ACTIVITE_COMMENTAIRE = 1;
     static final public int ACTIVITE_AJOUT_COMMENTAIRE = 2;
 
@@ -108,24 +113,27 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         System.out.println( "MAP");
 
         carte.moveCamera(CameraUpdateFactory.newLatLngZoom(camera,12));
-        listePositions = new ArrayList<>();
+        listeCommentaire = new ArrayList<>();
 
-        listePositions = accesseurPosition.lirePositionsEtreVivant(etreVivant.getId());
-        System.out.println( accesseurPosition.lirePositionsEtreVivant(etreVivant.getId()));
+        listeCommentaire = accesseurCommentaire.listerPositionsCommentaire(etreVivant.getId());
+        System.out.println( accesseurCommentaire.listerPositionsCommentaire(etreVivant.getId()));
 
-        for(Position position : listePositions){
-            carte.addMarker(new MarkerOptions().position(position.getLongitudeLatitude()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).setTag(position);
+        if (listeCommentaire != null){
+            for(Commentaire commentaire : listeCommentaire){
+                carte.addMarker(new MarkerOptions().position(commentaire.getLongitudeLatitude()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).setTag(commentaire);
+            }
+
+            carte.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker) {
+                    Commentaire commentaireMarque = (Commentaire) marker.getTag();
+                    System.out.println(commentaireMarque.getId());
+                    startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_COMMENTAIRE);
+                    return false;
+                }
+            });
         }
 
-        carte.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                Position posMarque = (Position) marker.getTag();
-                System.out.println(posMarque.getId());
-                startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_COMMENTAIRE);
-                return false;
-            }
-        });
 
     }
 
