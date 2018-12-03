@@ -34,17 +34,26 @@
       <file leaf-file-name="FragmentMap.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentMap.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="48" column="64" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="64" />
+            <state relative-caret-position="375">
+              <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="FragmentCommentaire.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="FragmentCommentaire.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentCommentaire.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
+            <state relative-caret-position="374">
+              <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="VueConnection.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/VueConnection.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="550">
+              <caret line="41" column="56" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -93,11 +102,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="CommentaireDAO.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="CommentaireDAO.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/donnee/CommentaireDAO.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="121" column="58" lean-forward="true" selection-start-line="121" selection-start-column="58" selection-end-line="121" selection-end-column="58" />
+            <state relative-caret-position="108">
+              <caret line="107" column="50" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="50" />
               <folding>
                 <element signature="e#3917#3949#1" expanded="true" />
               </folding>
@@ -127,15 +136,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="176">
               <caret line="8" selection-start-line="8" selection-end-line="8" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="PositionsURL.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/donnee/PositionsURL.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="88" selection-start-line="4" selection-end-line="5" />
             </state>
           </provider>
         </entry>
@@ -2158,10 +2158,10 @@
         <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/donnee/PositionDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/donnee/CommentaireURL.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/modele/Commentaire.java" />
-        <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentCommentaire.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/VueAjouterCommentaire.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/VueDetailFaune.java" />
         <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/donnee/CommentaireDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentCommentaire.java" />
       </list>
     </option>
   </component>
@@ -2367,13 +2367,13 @@
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3214683" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3214683" />
       <window_info anchor="bottom" id="Terminal" order="7" />
       <window_info anchor="bottom" id="Logcat" order="7" weight="0.32925472" />
       <window_info id="Captures" order="2" weight="0.25" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18313642" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18313642" />
       <window_info anchor="bottom" id="Build" order="7" weight="0.32894737" />
       <window_info anchor="right" id="Gradle" order="3" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -2564,20 +2564,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentMap.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="48" column="64" selection-start-line="48" selection-start-column="52" selection-end-line="48" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentCommentaire.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="48" column="42" selection-start-line="48" selection-start-column="42" selection-end-line="48" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/VueAjouterCommentaire.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="418">
@@ -2609,11 +2595,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/donnee/CommentaireDAO.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="121" column="58" lean-forward="true" selection-start-line="121" selection-start-column="58" selection-end-line="121" selection-end-column="58" />
+        <state relative-caret-position="108">
+          <caret line="107" column="50" selection-start-line="107" selection-start-column="49" selection-end-line="107" selection-end-column="50" />
           <folding>
             <element signature="e#3917#3949#1" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/VueConnection.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="41" column="56" selection-start-line="41" selection-start-column="52" selection-end-line="41" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentMap.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="50" column="50" selection-start-line="50" selection-start-column="50" selection-end-line="50" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/ca/qc/cgmatane/informatique/marinaconnect/vue/FragmentCommentaire.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="43" column="39" lean-forward="true" selection-start-line="43" selection-start-column="39" selection-end-line="43" selection-end-column="39" />
         </state>
       </provider>
     </entry>

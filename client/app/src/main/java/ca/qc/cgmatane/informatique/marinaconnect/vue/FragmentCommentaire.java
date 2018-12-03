@@ -1,6 +1,7 @@
 package ca.qc.cgmatane.informatique.marinaconnect.vue;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -21,8 +22,10 @@ public class FragmentCommentaire extends Fragment {
     Commentaire commentaire;
     protected EditText champCommentaire;
     int idEtreVivant;
+    protected Intent intentionNaviguerVueListeFaune;
 
     protected CommentaireDAO accesseurCommentaire = CommentaireDAO.getInstance();
+    static final public int ACTIVITE_LISTE_FAUNE= 1;
 
 
     public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
@@ -36,12 +39,14 @@ public class FragmentCommentaire extends Fragment {
 
         champCommentaire = (EditText) vue.findViewById(R.id.fragment_ajout_text_commentaire);
         Button boutonAjout = (Button) vue.findViewById(R.id.action_fragment_navigation_detail);
+        intentionNaviguerVueListeFaune = new Intent(getActivity(), VueListeFaune.class);
 
         boutonAjout.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View arg0){
                         enregistrerCommentaire();
-                        //startActivityForResult(intentionNaviguerAccueil, ACTIVITE_ACCUEIL);
+                        startActivityForResult(intentionNaviguerVueListeFaune, ACTIVITE_LISTE_FAUNE);
+
                     }
                 });
     }
