@@ -13,13 +13,13 @@
 		 function ajouterCommentaire($commentaire)
 		{
 			//$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(notecommentaire,urlimagecomm,textcom,idetrevivant) VALUES('$commentaire->notecommentaire','$commentaire->coordgpscommentaire','$commentaire->urlimagecomm','$commentaire->textcom','$commentaire->idetrevivant')";
-			$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(textecom,idetrevivant) VALUES('$commentaire->textcom','$commentaire->idetrevivant')";
+			$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(textecom,idetrevivant) VALUES('$commentaire->textcom',$commentaire->idetrevivant)";
 
 			global $basededonnees;
-			
 			$requeteAjouterCommentaire = $basededonnees->prepare($SQL_AJOUTER_COMMENTAIRE);
 			$reussite = $requeteAjouterCommentaire->execute();
-			
+			echo($reussite);
+
 			return $reussite;
 			
 		}
