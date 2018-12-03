@@ -10,10 +10,21 @@
 			$requeteListerCommentaire->execute();
 			return $requeteListerCommentaire->fetchAll(PDO::FETCH_OBJ);
 		}
+
+		function listerPositions($idEtreVivant){
+			$LISTER_POSITIONS = 'SELECT * FROM commentaire WHERE "idetrevivant" = ' . $idEtreVivant;
+			global $basededonnees;
+			$requeteListerPositons = $basededonnees->prepare($LISTER_POSITIONS);
+			$requeteListerPositons->execute();
+			return $requeteListerPositons->fetchAll(PDO::FETCH_OBJ);
+
+		}
+
+
 		 function ajouterCommentaire($commentaire)
 		{
 			//$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(notecommentaire,urlimagecomm,textcom,idetrevivant) VALUES('$commentaire->notecommentaire','$commentaire->coordgpscommentaire','$commentaire->urlimagecomm','$commentaire->textcom','$commentaire->idetrevivant')";
-			$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(textecom,idetrevivant) VALUES('$commentaire->textcom',$commentaire->idetrevivant)";
+			$SQL_AJOUTER_COMMENTAIRE = "INSERT into commentaire(textecom,idetrevivant,latitude,longitude) VALUES('$commentaire->textcom',$commentaire->idetrevivant,'$commentaire->latitude', '$commentaire->longitude')";
 
 			global $basededonnees;
 			$requeteAjouterCommentaire = $basededonnees->prepare($SQL_AJOUTER_COMMENTAIRE);
