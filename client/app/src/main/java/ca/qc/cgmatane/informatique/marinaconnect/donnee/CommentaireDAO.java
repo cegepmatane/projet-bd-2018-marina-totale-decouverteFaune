@@ -57,6 +57,11 @@ public class CommentaireDAO implements CommentaireURL {
             System.out.println("POSITIONS !!");
             Double latitude = commentaire.getLongitudeLatitude().latitude;
             Double longitude = commentaire.getLongitudeLatitude().longitude;
+            System.out.println("latitude : " + latitude);
+            System.out.println("longitude : " + longitude);
+            System.out.println("text : " + commentaire.getTextcom());
+            System.out.println("idetrevivant : " + commentaire.getIdetrevivant());
+
             envoyeur.write("textcom=" + commentaire.getTextcom()
                     +"&idetrevivant=" + commentaire.getIdetrevivant()
                     +"&latitude=" + latitude
@@ -112,7 +117,7 @@ public class CommentaireDAO implements CommentaireURL {
                 if(longitude == "" & latitude == ""){
                     return null;
                 }
-                LatLng longlat = new LatLng(Double.valueOf(longitude),Double.valueOf(latitude));
+                LatLng longlat = new LatLng(Double.valueOf(latitude),Double.valueOf(longitude));
                 commentaire.setLongitudeLatitude(longlat);
                 commentaire.setIdetrevivant(idEtreVivant);
 

@@ -83,6 +83,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
         actionNaviguerAjouterCommentaire.setOnClickListener(
                 new View.OnClickListener(){
                     public void onClick(View arg0){
+                        System.out.println("id : " + etreVivant.getId());
                         intentionNaviguerVueAjouterCommentaire.putExtra("idEtreVivant", etreVivant.getId() + "");
                         startActivityForResult(intentionNaviguerVueAjouterCommentaire, ACTIVITE_AJOUT_COMMENTAIRE);
                     }
@@ -120,6 +121,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
 
         if (listeCommentaire != null){
             for(Commentaire commentaire : listeCommentaire){
+                System.out.println("longtar : " + commentaire.getLongitudeLatitude());
                 carte.addMarker(new MarkerOptions().position(commentaire.getLongitudeLatitude()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE))).setTag(commentaire);
             }
 

@@ -47,8 +47,6 @@ public class FragmentCommentaire extends Fragment {
     }
 
     private void enregistrerCommentaire(){
-        System.out.println(latitudeLongitude);
-
         commentaire = new Commentaire(idEtreVivant,champCommentaire.getText().toString(), latitudeLongitude);
         System.out.println(commentaire.getLongitudeLatitude());
         accesseurCommentaire.ajouteCommentaireSQL(commentaire);

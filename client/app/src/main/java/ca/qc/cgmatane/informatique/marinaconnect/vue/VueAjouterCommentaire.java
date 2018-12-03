@@ -19,7 +19,8 @@ public class VueAjouterCommentaire extends AppCompatActivity {
 
         FragmentMap fragmentMap = new FragmentMap();
         fragmentMap.setIdEtreVivant(Integer.parseInt(intention.getStringExtra("idEtreVivant")));
-        fragmentTransaction.add(R.id.fragment_container,new FragmentMap());
+        System.out.println(fragmentMap);
+        fragmentTransaction.add(R.id.fragment_container,fragmentMap);
         fragmentTransaction.commit();
     }
 }
