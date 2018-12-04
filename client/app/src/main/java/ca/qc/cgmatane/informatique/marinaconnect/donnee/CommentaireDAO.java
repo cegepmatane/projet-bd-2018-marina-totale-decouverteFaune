@@ -141,4 +141,8 @@ public class CommentaireDAO implements CommentaireURL {
         return null;
     }
 
-}
+    public Commentaire recupererCommentaire(int idCommentaire) {
+
+        String url = URL_RECUPERER_COMMENTAIRE+"?idCommentaire="+idCommentaire;
+
+    }

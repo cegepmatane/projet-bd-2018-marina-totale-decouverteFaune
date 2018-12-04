@@ -130,7 +130,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
                 @Override
                 public boolean onMarkerClick(Marker marker) {
                     Commentaire commentaireMarque = (Commentaire) marker.getTag();
-                    System.out.println(commentaireMarque.getId());
+                    intentionNaviguerVueCommentaire.putExtra("idCommentaire", commentaireMarque.getId() + "");
                     startActivityForResult(intentionNaviguerVueCommentaire, ACTIVITE_COMMENTAIRE);
                     return false;
                 }

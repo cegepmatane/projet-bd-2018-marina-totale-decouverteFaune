@@ -6,11 +6,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.LatLng;
 
 import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
@@ -21,6 +24,9 @@ public class VueCommentaire extends AppCompatActivity implements OnMapReadyCallb
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_commentaire);
+        Intent intent = getIntent();
+        int idCommentaire = Integer.parseInt(intent.getStringExtra("idCommentaire"));
+        Log.d("idCommentaire","id: " + idCommentaire);
 
         // menu slide
         NavigationView navigationView = (NavigationView) findViewById(R.id.menu_swipe);
@@ -35,7 +41,6 @@ public class VueCommentaire extends AppCompatActivity implements OnMapReadyCallb
                         startActivity(new Intent(getApplicationContext(), MarinaConnect.class));
                         finish();
                         break;
-
                 }
                 return true;
             }
@@ -46,8 +51,10 @@ public class VueCommentaire extends AppCompatActivity implements OnMapReadyCallb
         fragementCarte.getMapAsync(this);
 
 
-
     }
     public void onMapReady(GoogleMap carte) {
+        LatLng camera = new LatLng(48.851552, -67.537350);
+        carte.moveCamera(CameraUpdateFactory.newLatLngZoom(camera,12));
+
     }
 }

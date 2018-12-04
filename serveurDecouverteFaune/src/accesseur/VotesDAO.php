@@ -1,5 +1,5 @@
 <?php
-include_once "basededonnees.php";
+include_once "baseDeDonnee.php";
 class VoteDAO
 {
     function recupererMoyenneVote($idCommentaire)
