@@ -20,7 +20,7 @@ import ca.qc.cgmatane.informatique.marinaconnect.modele.Utilisateur;
 
 public class VueConnection extends AppCompatActivity {
     static final public int ACTIVITE_LISTE_FAUNE= 1;
-
+    static VueConnection VueConnection;
     protected Intent intentionNaviguerVueListeFaune;
     protected EditText champMail;
     protected EditText champMdp;
@@ -36,6 +36,7 @@ public class VueConnection extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_connection);
+        VueConnection = this;
 
         champMail = (EditText)findViewById(R.id.vue_se_connecter_champ_mail);
         champMdp = (EditText)findViewById(R.id.vue_se_connecter_champ_mot_de_passe);
@@ -75,10 +76,15 @@ public class VueConnection extends AppCompatActivity {
                 editeur.commit();
             }
             startActivityForResult(intentionNaviguerVueListeFaune, ACTIVITE_LISTE_FAUNE);
+            getInstance().finish();
         }
         else{
             toast.show();
         }
+    }
+
+    public static VueConnection getInstance(){
+        return VueConnection;
     }
 
 }

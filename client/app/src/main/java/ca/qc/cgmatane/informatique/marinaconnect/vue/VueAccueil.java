@@ -9,6 +9,8 @@ import android.widget.Button;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
 import ca.qc.cgmatane.informatique.marinaconnect.donnee.UtilisateurDAO;
 
+import static ca.qc.cgmatane.informatique.marinaconnect.vue.VueConnection.getInstance;
+
 public class VueAccueil extends AppCompatActivity {
 
     static final public int ACTIVITE_SE_CONNECTER = 1;
@@ -31,6 +33,8 @@ public class VueAccueil extends AppCompatActivity {
         actionNaviguerSeConnecter.setOnClickListener(new View.OnClickListener(){
             public void onClick(View arg0){
                 startActivityForResult(intentionNaviguerSeConnecter, ACTIVITE_SE_CONNECTER);
+                finish();
+
             }
         });
         intentionNaviguerCreerCompte = new Intent(this, VueInscription.class);
@@ -38,6 +42,8 @@ public class VueAccueil extends AppCompatActivity {
         actionNaviguerCreerCompte.setOnClickListener(new View.OnClickListener(){
             public void onClick(View arg0){
                 startActivityForResult(intentionNaviguerCreerCompte, ACTIVITE_CREER_COMPTE);
+                finish();
+
             }
         });
 

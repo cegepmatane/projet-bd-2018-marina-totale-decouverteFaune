@@ -86,6 +86,7 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
                         System.out.println("id : " + etreVivant.getId());
                         intentionNaviguerVueAjouterCommentaire.putExtra("idEtreVivant", etreVivant.getId() + "");
                         startActivityForResult(intentionNaviguerVueAjouterCommentaire, ACTIVITE_AJOUT_COMMENTAIRE);
+                        finish();
                     }
                 });
 
