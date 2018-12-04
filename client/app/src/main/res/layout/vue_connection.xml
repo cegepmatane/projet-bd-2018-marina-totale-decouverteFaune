@@ -12,49 +12,61 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="30dp"
+        android:layout_marginTop="60dp"
         android:gravity="center_horizontal"
-        android:text="Se connecter" />
+        android:text="Se connecter"
+        android:textSize="30sp" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mail" />
 
     <EditText
         android:id="@+id/vue_se_connecter_champ_mail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="70dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/border"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="" />
+        android:hint="Mail"
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Mot de passe" />
+        android:inputType="textPersonName"
+        android:paddingLeft="100dp"
+        android:text=""
+        android:textColorHint="#000"
+        android:textSize="22dp" />
+
 
     <EditText
         android:id="@+id/vue_se_connecter_champ_mot_de_passe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="80dp"
         android:layout_marginBottom="25dp"
+        android:background="@drawable/border"
         android:ems="10"
+        android:hint="Mot de passe"
         android:inputType="textPersonName"
-        android:text="" />
+        android:paddingLeft="40dp"
+        android:text=""
+        android:textColorHint="#000"
+        android:textSize="22dp" />
 
     <CheckBox
         android:id="@+id/checkbox_se_connecter"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="44dp"
         android:checked="true"
+        android:paddingTop="0dp"
         android:text="Rester connecter" />
 
     <Button
         android:id="@+id/action_se_connecter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="60dp"
+        android:layout_marginRight="60dp"
+        android:background="@drawable/border"
         android:text="Se connecter !" />
 </LinearLayout>

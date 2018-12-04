@@ -16,20 +16,24 @@
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
         android:layout_marginTop="90dp"
+        android:paddingLeft="50dp"
         android:text="MarinaConnect"
         android:textSize="40sp" />
 
     <Button
         android:id="@+id/vue_commencer_bouton"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginLeft="100dp"
-        android:layout_marginTop="250dp"
-        android:layout_marginRight="100dp"
-        android:layout_marginBottom="220dp"
-        android:text="Commencer" />
+        android:layout_marginLeft="60dp"
+        android:layout_marginTop="300dp"
+        android:layout_marginRight="60dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/border"
+        android:text="Commencer"
+        android:textColorHint="#000"
+        android:textSize="22dp" />
 
     <TextView
         android:id="@+id/textView_utilisateur_vue_accueil"

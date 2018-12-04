@@ -169,6 +169,7 @@ public class CommentaireDAO implements CommentaireURL {
                 commentaire.setLongitudeLatitude(longlat);
                 String textecom = noeudCommentaire.getElementsByTagName("textecom").item(0).getTextContent();
                 commentaire.setTextcom(textecom);
+                System.out.println("COMMENTAIRE  : "+ commentaire.getTextcom());
                 return commentaire;
             }
 

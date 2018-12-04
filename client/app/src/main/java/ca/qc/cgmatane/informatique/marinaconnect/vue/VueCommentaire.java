@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -17,16 +18,25 @@ import com.google.android.gms.maps.model.LatLng;
 
 import ca.qc.cgmatane.informatique.marinaconnect.MarinaConnect;
 import ca.qc.cgmatane.informatique.marinaconnect.R;
+import ca.qc.cgmatane.informatique.marinaconnect.donnee.CommentaireDAO;
+import ca.qc.cgmatane.informatique.marinaconnect.modele.Commentaire;
 
 public class VueCommentaire extends AppCompatActivity implements OnMapReadyCallback {
 
-    @Override
+    protected CommentaireDAO accesseurCommentaire = CommentaireDAO.getInstance();
+    Commentaire commentaire;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_commentaire);
         Intent intent = getIntent();
         int idCommentaire = Integer.parseInt(intent.getStringExtra("idCommentaire"));
         Log.d("idCommentaire","id: " + idCommentaire);
+
+        commentaire = accesseurCommentaire.recupererCommentaire(idCommentaire);
+        Log.d("textCom","Com: " + commentaire.getTextcom());
+
+        TextView textecom = (TextView)findViewById(R.id.text_vue_commentaire);
+        textecom.setText(commentaire.getTextcom());
 
         // menu slide
         NavigationView navigationView = (NavigationView) findViewById(R.id.menu_swipe);
@@ -53,8 +63,7 @@ public class VueCommentaire extends AppCompatActivity implements OnMapReadyCallb
 
     }
     public void onMapReady(GoogleMap carte) {
-        LatLng camera = new LatLng(48.851552, -67.537350);
-        carte.moveCamera(CameraUpdateFactory.newLatLngZoom(camera,12));
+        carte.moveCamera(CameraUpdateFactory.newLatLngZoom(commentaire.getLongitudeLatitude(),14));
 
     }
 }

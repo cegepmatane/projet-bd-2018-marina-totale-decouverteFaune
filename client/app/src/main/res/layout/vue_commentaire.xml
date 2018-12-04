@@ -7,6 +7,14 @@
     tools:context=".vue.VueCommentaire">
 
     <TextView
+        android:id="@+id/text_vue_commentaire"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="150dp"
+        android:paddingTop="450dp"
+        android:text="TexteCom" />
+
+    <TextView
         android:id="@+id/textView5"
         android:layout_width="168dp"
         android:layout_height="57dp"
@@ -33,7 +41,8 @@
         android:layout_marginTop="81dp"
         android:layout_marginEnd="0dp"
         android:layout_marginRight="0dp"
-        android:layout_marginBottom="253dp" />
+        android:layout_marginBottom="253dp"
+        android:paddingTop="400dp" />
 
     <android.support.design.widget.NavigationView
         android:id="@+id/menu_swipe"
