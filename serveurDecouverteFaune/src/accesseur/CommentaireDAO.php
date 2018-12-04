@@ -34,5 +34,14 @@
 			return $reussite;
 			
 		}
+
+		function recupererCommentaire($idCommentaire)
+		{			
+			$RECUPERER_COMMENTAIRE = 'SELECT * FROM commentaire WHERE "idCommentaire" ='. $idCommentaire;
+			global $basededonnees;
+			$requeteRecupererCommentaire = $basededonnees->prepare($RECUPERER_COMMENTAIRE);
+			$requeteRecupererCommentaire->execute();
+			return $requeteRecupererCommentaire->fetchAll(PDO::FETCH_OBJ);
+		}
 	}
 ?>
