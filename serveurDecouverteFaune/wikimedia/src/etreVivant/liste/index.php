@@ -1,9 +1,8 @@
 <?php 
-
-	/*include "../../accesseur/EtreVivantDAO.php";
-	$etreVivantDAO = new EtreVivantDAO();
-	//print_r($etreVivantDAO);
-	$listeEtreVivant = $etreVivantDAO->listerEtreVivant();
-	print_r($listeEtreVivant);*/
+	require_once "../../modele/EtreVivant.php";
+	require_once"../../accesseur/EtreVivantDAOs.php";
 	
-?>
+	$etreVivantDAO = new EtreVivantDAOs();
+	$listeEtreVivantXml = $etreVivantDAO->listerEtreVivantXml();
+	header("Content-type: text/xml");
+	echo $listeEtreVivantXml;
