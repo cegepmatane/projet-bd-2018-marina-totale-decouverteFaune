@@ -51,7 +51,7 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			
 			
 		}
-		/*public function listerEtreVivantXml()
+		public function listerEtreVivantXml()
 		{
 			$listeEtreVivant = $this->listerEtreVivant();
 			$listeEtreVivantXml ='<?xml version="1.0" encoding="UTF-8"?>' . "<etreVivants>";
@@ -65,8 +65,8 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			}
 			$listeEtreVivantXml .= "</etreVivants>";
 			return $listeEtreVivantXml;
-		}*/
-		/*function ajouterEtreVivant($etreVivant)
+		}
+		function ajouterEtreVivant($etreVivant)
 		{
 			global $services;
 
@@ -75,7 +75,7 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			$identifier = new \Mediawiki\DataModel\PageIdentifier( $title );
 			$revision = new \Mediawiki\DataModel\Revision( $newContent, $identifier );
 			$services->newRevisionSaver()->save( $revision );
-		}*/
+		}
 		
 	}
 ?>
