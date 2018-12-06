@@ -39,7 +39,7 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			}
 			return $p;
 		}
-	/*	private function obtenirEtreVivant($titre)
+		private function obtenirEtreVivant($titre)
 		{
 			global $services;
 			$page = $services->newPageGetter()->getFromTitle( $titre );
@@ -50,7 +50,7 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			return $etreVivant;
 			
 			
-		}*/
+		}
 		/*public function listerEtreVivantXml()
 		{
 			$listeEtreVivant = $this->listerEtreVivant();
