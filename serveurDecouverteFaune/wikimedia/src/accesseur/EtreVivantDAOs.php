@@ -29,7 +29,7 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			echo '</pre>';*/
 			return $listeEtreVivant;
 		}
-		/*private function recupererListeTitrePageDansContenu($str,$start,$end)
+		private function recupererListeTitrePageDansContenu($str,$start,$end)
 		{
 			$p1 = explode($start,$str);
 			for($i=1;$i<count($p1);$i++)
@@ -38,7 +38,7 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 				$p[] = $p2[0];
 			}
 			return $p;
-		}*/
+		}
 	/*	private function obtenirEtreVivant($titre)
 		{
 			global $services;
