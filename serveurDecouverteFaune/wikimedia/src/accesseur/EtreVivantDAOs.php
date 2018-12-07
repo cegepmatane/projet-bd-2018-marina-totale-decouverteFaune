@@ -10,7 +10,6 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 			$page = $services->newPageGetter()->getFromTitle( 'Liste des Animaux Marins' );
 			//echo $page->getTitle()->getText();
 			//echo($page->getRevisions()->getLatest()->getContent()->getData());
-			
 			//print_r ($page);
 			//return $page;
 			//$pageUnAnimal =$services->
@@ -70,8 +69,8 @@ require_once __DIR__ ."/../modele/EtreVivant.php";
 		{
 			global $services;
 
-			$newContent = new \Mediawiki\DataModel\Content( 'Hello World' );
-			$title = new \Mediawiki\DataModel\Title( 'New Page' );
+			$newContent = new \Mediawiki\DataModel\Content( "== Description == " . PHP_EOL . $etreVivant->contenu );
+			$title = new \Mediawiki\DataModel\Title( $etreVivant->titre );
 			$identifier = new \Mediawiki\DataModel\PageIdentifier( $title );
 			$revision = new \Mediawiki\DataModel\Revision( $newContent, $identifier );
 			$services->newRevisionSaver()->save( $revision );
