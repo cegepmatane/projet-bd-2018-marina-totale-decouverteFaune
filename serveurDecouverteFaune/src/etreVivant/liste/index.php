@@ -1,7 +1,7 @@
 <?php 
 
-	include "../../accesseur/EtreVivantDAO.php";
-	$etreVivantDAO = new EtreVivantDAO();
+	include "../../accesseur/EtreVivantDAOMediaWiki.php";
+	$etreVivantDAO = new EtreVivantDAOMediaWiki();
 	//print_r($etreVivantDAO);
 	$listeEtreVivant = $etreVivantDAO->listerEtreVivant();
 	//print_r($listePensees);
@@ -20,10 +20,8 @@ foreach($listeEtreVivant as $etreVivant)
 {
 	?>
 	<etreVivant>
-		<categorie><?=($etreVivant->categorie)?></categorie>
-		<information><?=($etreVivant->information)?></information>
-		<espece><?=$etreVivant->espece?></espece>
-		<id><?=$etreVivant->id?></id>
+		<titre><?=($etreVivant->titre)?></titre>
+		<description><?=($etreVivant->description)?></description>
 	</etreVivant>
 	<?php
 }

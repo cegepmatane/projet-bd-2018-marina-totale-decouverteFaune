@@ -21,7 +21,9 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 <?php
     foreach ($compteur as $unCompteur) {
 ?>
-    <nombre><?=$unCompteur->nombre?></nombre>
+    <compteur>
+        <nombre><?=$unCompteur->nombre?></nombre>
+    </compteur>
 <?php
     }
 ?>

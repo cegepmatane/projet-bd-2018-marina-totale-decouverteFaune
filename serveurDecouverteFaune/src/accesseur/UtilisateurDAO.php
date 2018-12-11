@@ -17,7 +17,7 @@
 		}
 		
 		function verifierConnection($utilisateur){	
-			$SQL_VERIF_CONNECTION = "SELECT count(id) as nombre FROM utilisateur WHERE mail ='test' AND mdp ='test';";
+			$SQL_VERIF_CONNECTION = "SELECT count(id) as nombre FROM utilisateur WHERE mail ='$utilisateur->mail' AND mdp ='$utilisateur->mdp';";
 			global $basededonnees;
 			$requeteVerifUtilisateur = $basededonnees->prepare($SQL_VERIF_CONNECTION);
 			$requeteVerifUtilisateur->execute();
