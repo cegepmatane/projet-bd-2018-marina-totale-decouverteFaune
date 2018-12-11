@@ -28,13 +28,17 @@ public class VueListeFaune extends AppCompatActivity {
     List<EtreVivant> etreVivants;
 
     static final public int ACTIVITE_DETAIL_FAUNE = 1;
+    static final public int ACTIVITE_AJOUTER_ETRE_VIVANT = 2;
+
     protected Intent intentionNaviguerVueDetailFaune;
+    protected Intent intentionNaviguerVueAjouterEtreVivant;
 
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.vue_liste_faune);
         intentionNaviguerVueDetailFaune = new Intent(this, VueDetailFaune.class);
+        intentionNaviguerVueAjouterEtreVivant = new Intent(this, VueAjouterEtreVivant.class);
         final ListView listView = (ListView) findViewById(R.id.vue_liste_faune);
         //etreVivants.clear();
 
@@ -67,7 +71,9 @@ public class VueListeFaune extends AppCompatActivity {
                         startActivity(new Intent(getApplicationContext(), MarinaConnect.class));
                         finish();
                         break;
-
+                    case (R.id.naviguer_ajouter_etre_vivant):
+                        startActivityForResult(intentionNaviguerVueAjouterEtreVivant, ACTIVITE_AJOUTER_ETRE_VIVANT);
+                        break;
                 }
                 return true;
             }

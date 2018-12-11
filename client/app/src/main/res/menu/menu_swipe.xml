@@ -4,9 +4,10 @@
     <item android:id="@+id/naviguer_acceuil"
         android:title="Acceuil"/>
 
+    <item android:id="@+id/naviguer_ajouter_etre_vivant"
+        android:title="Ajouter un Animal"/>
+
     <item android:id="@+id/naviguer_se_deconnecter"
         android:title="Se déconnecter"/>
-
-
 
 </menu>

@@ -45,6 +45,8 @@
         <activity android:name=".vue.VueDetailFaune" />
         <activity android:name=".vue.VueCommentaire" />
         <activity android:name=".vue.VueAjouterCommentaire" />
+        <activity android:name=".vue.VueAjouterEtreVivant" />
+
 
 
 
