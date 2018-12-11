@@ -58,9 +58,7 @@ public class EtreVivantDAO {
                 EtreVivant etreVivant = new EtreVivant();
                 String id = noeudEtreVivant.getElementsByTagName("id").item(0).getTextContent();
                 etreVivant.setId(Integer.parseInt(id));
-                String categorie = noeudEtreVivant.getElementsByTagName("categorie").item(0).getTextContent();
-                etreVivant.setCategorie(categorie);
-                String information = noeudEtreVivant.getElementsByTagName("information").item(0).getTextContent();
+                String information = noeudEtreVivant.getElementsByTagName("description").item(0).getTextContent();
                 etreVivant.setInformation(information);
                 String espece = noeudEtreVivant.getElementsByTagName("espece").item(0).getTextContent();
                 etreVivant.setEspece(espece);

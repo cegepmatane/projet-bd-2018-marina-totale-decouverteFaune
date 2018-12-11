@@ -1,10 +1,15 @@
 <?php 
 
 	include "../../accesseur/EtreVivantDAOMediaWiki.php";
-	$etreVivantDAO = new EtreVivantDAOMediaWiki();
+	include "../../accesseur/EtreVivantDAOPostgre.php";
+
+	$etreVivantDAOMediaWiki = new EtreVivantDAOMediaWiki();
 	//print_r($etreVivantDAO);
-	$listeEtreVivant = $etreVivantDAO->listerEtreVivant();
+	$listeEtreVivant = $etreVivantDAOMediaWiki->listerEtreVivant();
 	//print_r($listePensees);
+	$etreVivantDAOPostgre = new EtreVivantDAOPostgre();
+	$listeEtreVivantPostgre = $etreVivantDAOPostgre->listerEtreVivant();
+
 	
 ?>
 <?php
@@ -18,12 +23,18 @@ echo '<?xml version="1.0" encoding="UTF-8"?>';
 
 foreach($listeEtreVivant as $etreVivant)
 {
+	foreach($listeEtreVivantPostgre as $etreVivantPostgre){
+		if($etreVivant->titre == $etreVivantPostgre->espece){
 	?>
-	<etreVivant>
-		<titre><?=($etreVivant->titre)?></titre>
-		<description><?=($etreVivant->description)?></description>
-	</etreVivant>
+			<etreVivant>
+				<id><?=($etreVivantPostgre->id)?></id>
+				<espece><?=($etreVivant->titre)?></espece>
+				<description><?=($etreVivant->description)?></description>
+			</etreVivant>
 	<?php
+		}
+	}
+
 }
 ?>
 </etreVivants>

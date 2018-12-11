@@ -62,7 +62,6 @@ public class VueDetailFaune extends AppCompatActivity implements OnMapReadyCallb
 
 
         etreVivant.setId(Integer.parseInt(intent.getStringExtra("idEtreVivant")));
-        etreVivant.setCategorie(intent.getStringExtra("categorie"));
         etreVivant.setEspece(intent.getStringExtra("espece"));
         etreVivant.setUrlImage(intent.getStringExtra("urlImage"));
         etreVivant.setInformation(intent.getStringExtra("information"));

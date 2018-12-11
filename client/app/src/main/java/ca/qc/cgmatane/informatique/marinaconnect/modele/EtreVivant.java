@@ -3,7 +3,6 @@ package ca.qc.cgmatane.informatique.marinaconnect.modele;
 public class EtreVivant {
 
     protected int id;
-    protected String categorie;
     protected String information;
     protected String urlImage;
     protected String espece;
@@ -26,13 +25,6 @@ public class EtreVivant {
         this.id = id;
     }
 
-    public String getCategorie() {
-        return categorie;
-    }
-
-    public void setCategorie(String categorie) {
-        this.categorie = categorie;
-    }
 
     public String getInformation() {
         return information;

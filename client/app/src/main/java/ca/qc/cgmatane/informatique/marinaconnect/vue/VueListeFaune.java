@@ -46,7 +46,6 @@ public class VueListeFaune extends AppCompatActivity {
                 Object o = listView.getItemAtPosition(position);
                 EtreVivant etreVivant = (EtreVivant) o;
                 intentionNaviguerVueDetailFaune.putExtra("idEtreVivant", etreVivant.getId() + "");
-                intentionNaviguerVueDetailFaune.putExtra("categorie", etreVivant.getCategorie());
                 intentionNaviguerVueDetailFaune.putExtra("information", etreVivant.getInformation());
                 intentionNaviguerVueDetailFaune.putExtra("espece", etreVivant.getEspece());
 
