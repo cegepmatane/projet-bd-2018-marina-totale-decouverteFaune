@@ -1,12 +1,19 @@
 package ca.qc.cgmatane.informatique.marinaconnect.donnee;
 
+import android.util.Log;
+
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStreamWriter;
 import java.io.StringBufferInputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
@@ -82,5 +89,37 @@ public class EtreVivantDAO {
 
         }
         return listeEtreVivant;
+    }
+
+    public void ajouteEtreVivant(EtreVivant etreVivant) {
+        try {
+            URL urlAjouterEtreVivant = new URL("http://158.69.113.110/serveurDecouverteFaune/src/etreVivant/ajouter/index.php");
+            HttpURLConnection connection = (HttpURLConnection) urlAjouterEtreVivant.openConnection();
+            connection.setDoOutput(true);
+            connection.setRequestMethod("POST");
+
+            OutputStreamWriter envoyeur = new HttpPostRequete().execute(connection).get();
+
+            envoyeur.write("espece=" + etreVivant.getEspece()
+                    + "&description=" + etreVivant.getInformation());
+
+            Log.d("HELLO", "1 " + envoyeur);
+            envoyeur.close();
+
+            InputStream fluxLecture = new ServiceFluxDAO().execute(connection).get(); // NE PAS RETIRER NECESSAIRE AU FONCTIONNEMENT
+            Log.d("HELLO", "2 " + fluxLecture);
+            connection.disconnect();
+
+
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }
